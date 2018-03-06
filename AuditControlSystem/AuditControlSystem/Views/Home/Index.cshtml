@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Система контроля аудитов</h1>
+    <p class="lead">Описание</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Стандарты</h2>
+        <p>
+            Описание какое-нибудь
+        </p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div>
+        <h3>Распродажа книг</h3>
+        <table>
+            <tr>
+                <td><p>Название стандарта</p></td>
+                <td><p>Описание стандарта</p></td>
+                <td><p>Файл шаблона</p></td>
+                <td></td>
+            </tr>
+            @foreach (var s in ViewBag.Standarts)
+        {
+                <tr>
+                    <td><p>@s.StandartName</p></td>
+                    <td><p>@s.StandartDescription</p></td>
+                    <td><p>@s.StandartFileName</p></td>
+                    <td><p><a href="/Home/Buy/@s.StandartId">Добавить</a></p></td>
+                </tr>
+            }
+        </table>
+    </div>
+    @*<div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>*@
+</div>
