@@ -10,6 +10,6 @@ namespace AuditControlSystem.Models
         public int StandartId { get; set; }
         public string StandartName { get; set; }
         public string StandartDescription { get; set; }
-        public string StandartFileName { get; set; }
+        public byte[] StandartFile { get; set; }
     }
 }

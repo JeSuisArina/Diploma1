@@ -11,7 +11,7 @@ namespace AuditControlSystem.Models
         public int ApplicationId { get; set; }
         public string AuditorId { get; set; }
         public string AdjustmentContent { get; set; }
-        public string AdjustmentFileName { get; set; }
+        public byte[] AdjustmentFile { get; set; }
         public DateTime AdjustmentDateTime { get; set; }
     }
 }
