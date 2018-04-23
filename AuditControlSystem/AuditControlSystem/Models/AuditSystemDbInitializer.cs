@@ -35,7 +35,7 @@ namespace AuditControlSystem.Models
             string password1 = "_Aa123456";
             var result1 = userManager.Create(auditor, password1);
 
-            var user = new ApplicationUser { Email = "user@mail.ru", UserName = "User" };
+            var user = new ApplicationUser { Email = "user@mail.ru", UserName = "User апа" };
             string password2 = "_Aa123456";
             var result2 = userManager.Create(auditor, password2);
 
