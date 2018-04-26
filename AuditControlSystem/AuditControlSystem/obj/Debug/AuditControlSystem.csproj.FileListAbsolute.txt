@@ -227,8 +227,8 @@ C:\Users\Котя\Documents\GitHub\Diploma\Diploma-master\AuditControlSystem\Aud
 C:\Users\Котя\Documents\GitHub\Diploma\Diploma-master\AuditControlSystem\AuditControlSystem\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Котя\Documents\GitHub\Diploma\Diploma-master\AuditControlSystem\AuditControlSystem\obj\Debug\AuditControlSystem.dll
 C:\Users\Котя\Documents\GitHub\Diploma\Diploma-master\AuditControlSystem\AuditControlSystem\obj\Debug\AuditControlSystem.pdb
-C:\Users\Котя\Documents\GitHub\Diploma1\AuditControlSystem\AuditControlSystem\bin\ApplicationInsights.config
 C:\Users\Котя\Documents\GitHub\Diploma1\AuditControlSystem\AuditControlSystem\bin\roslyn\csc.exe
+C:\Users\Котя\Documents\GitHub\Diploma1\AuditControlSystem\AuditControlSystem\bin\ApplicationInsights.config
 C:\Users\Котя\Documents\GitHub\Diploma1\AuditControlSystem\AuditControlSystem\bin\roslyn\csc.exe.config
 C:\Users\Котя\Documents\GitHub\Diploma1\AuditControlSystem\AuditControlSystem\bin\roslyn\csc.rsp
 C:\Users\Котя\Documents\GitHub\Diploma1\AuditControlSystem\AuditControlSystem\bin\roslyn\csi.exe
