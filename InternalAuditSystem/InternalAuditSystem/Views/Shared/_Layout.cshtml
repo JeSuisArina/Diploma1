@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>@ViewBag.Title</title>
+    <!-- vendor css -->
+    <link href="../../Scripts/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="../../Scripts/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="../../Scripts/lib/highlightjs/github.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/katniss.css">
+</head>
+
+<body>
+    <div class="kt-sideleft-header">
+        <div class="kt-logo"></div>
+        <div id="ktDate" class="kt-date-today"></div>
+    </div>
+
+    <!-- ##### SIDEBAR MENU ##### -->
+    <div class="kt-sideleft">
+        <label class="kt-sidebar-label">Навигация</label>
+        <ul class="nav kt-sideleft-menu">
+            <li class="nav-item">
+                <a href="../News/Index" class="nav-link">
+                    <i class="icon ion-ios-home-outline"></i>
+                    <span>Главная страница</span>
+                </a>
+            </li><!-- nav-item -->
+            <li class="nav-item">
+                <a href="" class="nav-link with-sub">
+                    <i class="icon ion-ios-bookmarks-outline"></i>
+                    <span>Стандарты</span>
+                </a>
+                <ul class="nav-sub">
+                    <li class="nav-item"><a href="form-elements.html" class="nav-link">ГОСТ 34</a></li>
+                    <li class="nav-item"><a href="form-layouts.html" class="nav-link">ГОСТ 119</a></li>
+                    <li class="nav-item"><a href="form-validation.html" class="nav-link">ГОСТ ТПУ</a></li>
+                    <li class="nav-item"><a href="form-wizards.html" class="nav-link">ГОСТ</a></li>
+                    <li class="nav-item"><a href="form-editor-text.html" class="nav-link">Добавить стандарт</a></li>
+                </ul>
+            </li><!-- nav-item -->
+            <li class="nav-item">
+                <a href="" class="nav-link with-sub">
+                    <i class="icon ion-ios-filing-outline"></i>
+                    <span>Заявки</span>
+                </a>
+                <ul class="nav-sub">
+                    <li class="nav-item"><a href="accordion.html" class="nav-link">Просмотреть мои заявки</a></li>
+                    <li class="nav-item"><a href="alerts.html" class="nav-link">Подать заявку</a></li>
+                    <li class="nav-item"><a href="buttons.html" class="nav-link">Просмотреть заявки пользователей</a></li>
+                </ul>
+            </li><!-- nav-item -->
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="icon ion-ios-list-outline"></i>
+                    <span>Сертификаты</span>
+                </a>
+            </li><!-- nav-item -->
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="icon ion-ios-analytics-outline"></i>
+                    <span>Отчеты</span>
+                </a>
+            </li><!-- nav-item -->
+            <li class="nav-item">
+                <a href="" class="nav-link with-sub">
+                    <i class="icon ion-ios-briefcase-outline"></i>
+                    <span>Подразделения</span>
+                </a>
+                <ul class="nav-sub">
+                    <li class="nav-item"><a href="../Subdivisions/Index" class="nav-link">Список подразделений</a></li>
+                    <li class="nav-item"><a href="alerts.html" class="nav-link">Добавить подразделение</a></li>
+                </ul>
+            </li><!-- nav-item -->
+            <li class="nav-item">
+                <a href="" class="nav-link with-sub">
+                    <i class="icon ion-ios-person-outline"></i>
+                    <span>Пользователи</span>
+                </a>
+                <ul class="nav-sub">
+                    <li class="nav-item"><a href="accordion.html" class="nav-link">Список пользователей</a></li>
+                    <li class="nav-item"><a href="alerts.html" class="nav-link">Добавить пользователя</a></li>
+                </ul>
+            </li><!-- nav-item -->
+        </ul>
+    </div>
+
+    <!-- ##### HEAD PANEL ##### -->
+    <div class="kt-headpanel">
+        <a href="../News/Index" style="font-size: 24px">Система сопровождения внутреннего аудита</a>
+        <div class="kt-headpanel-right">@Html.Partial("_LoginPartial")</div>
+    </div>
+    <div class="kt-breadcrumb">
+        <nav class="breadcrumb">
+            <a class="breadcrumb-item" href="index.html">@ViewBag.Pass</a>
+            <span class="breadcrumb-item active">@ViewBag.Title</span>
+        </nav>
+    </div><!-- kt-breadcrumb -->
+
+    @RenderBody()
+
+    <script src="../../Scripts/lib/jquery/jquery.js"></script>
+    <script src="../../Scripts/lib/popper.js/popper.js"></script>
+    <script src="../../Scripts/lib/bootstrap/bootstrap.js"></script>
+    <script src="../../Scripts/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../../Scripts/lib/moment/moment.js"></script>
+    <script src="../../Scripts/lib/highlightjs/highlight.pack.js"></script>
+    <script src="../../Scripts/js/katniss.js"></script>
+</body>
+</html>
+

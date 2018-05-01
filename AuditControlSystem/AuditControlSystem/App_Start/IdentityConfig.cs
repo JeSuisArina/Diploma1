@@ -12,6 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using AuditControlSystem.Models;
 
+
 namespace AuditControlSystem
 {
     public class EmailService : IIdentityMessageService

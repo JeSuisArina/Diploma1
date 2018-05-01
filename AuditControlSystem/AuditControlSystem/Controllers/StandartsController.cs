@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AuditControlSystem.Models;
+using AuditControlSystem.Models.EntityModels;
 using System.IO;
 
 namespace AuditControlSystem.Controllers

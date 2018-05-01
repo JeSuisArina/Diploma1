@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AuditControlSystem.Models.Subdivision>
+﻿@model IEnumerable<AuditControlSystem.Models.EntityModels.Subdivision>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -30,7 +30,7 @@
                     <h6 class="card-body-title">Подразделения</h6>
                     <p class="mg-b-20 mg-sm-b-30">Using the most basic table markup.</p>
                     <p>
-                        @Html.ActionLink("Create New", "Create")
+                        @Html.ActionLink("Добавить подразделение", "Create")
                     </p>
                     <div class="table-responsive">
                         <table class="table mg-b-0">
@@ -45,7 +45,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @*@foreach (var item in Model)
+                                @foreach (var item in Model)
                                 {
                                     <tr>
                                         <td>
@@ -62,7 +62,7 @@
                                             @Html.ActionLink("Delete", "Delete", new { id = item.SubdivisionId })
                                         </td>
                                     </tr>
-                                }*@
+                                }
                             </tbody>
                         </table>
                     </div>

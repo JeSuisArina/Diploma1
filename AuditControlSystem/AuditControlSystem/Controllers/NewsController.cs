@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AuditControlSystem.Models;
+using AuditControlSystem.Models.EntityModels;
 
 namespace AuditControlSystem.Controllers
 {
@@ -17,7 +18,8 @@ namespace AuditControlSystem.Controllers
         // GET: News
         public ActionResult Index()
         {
-            return View(db.Newss);
+            SqlConnection.ClearAllPools();
+            return View(db.Newses);
         }
 
         // GET: News/Details/5
@@ -27,7 +29,7 @@ namespace AuditControlSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.Newss.Find(id);
+            News news = db.Newses.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -50,7 +52,7 @@ namespace AuditControlSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Newss.Add(news);
+                db.Newses.Add(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +67,7 @@ namespace AuditControlSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.Newss.Find(id);
+            News news = db.Newses.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -96,7 +98,7 @@ namespace AuditControlSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.Newss.Find(id);
+            News news = db.Newses.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -109,8 +111,8 @@ namespace AuditControlSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            News news = db.Newss.Find(id);
-            db.Newss.Remove(news);
+            News news = db.Newses.Find(id);
+            db.Newses.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
