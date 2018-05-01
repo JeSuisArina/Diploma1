@@ -10,7 +10,6 @@ namespace AuditControlSystem.Models
     {
         public AuditContext() : base("DefaultConnection") { }
 
-        public DbSet<Auditor> Auditors { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Standart> Standarts { get; set; }
@@ -18,5 +17,6 @@ namespace AuditControlSystem.Models
         public DbSet<Application> Applications { get; set; }
         public DbSet<Sertificate> Sertificates { get; set; }
         public DbSet<Subdivision> Subdivisions { get; set; }
+        public DbSet<News> Newss { get; set; }
     }
 }

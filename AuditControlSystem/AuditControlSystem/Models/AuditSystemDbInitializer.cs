@@ -12,11 +12,11 @@ namespace AuditControlSystem.Models
     {
         protected override void Seed(AuditContext context)
         {
-            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
+            /*var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            // создаем две роли
+            // создаем три роли
             var role1 = new IdentityRole { Name = "admin" };
             var role2 = new IdentityRole { Name = "auditor" };
             var role3 = new IdentityRole { Name = "user" };
@@ -48,15 +48,11 @@ namespace AuditControlSystem.Models
                 userManager.AddToRole(user.Id, role3.Name);
             }
 
-            base.Seed(context);
-        }
-        //protected override void Seed(AuditContext db)
-        //{
-        //    db.Standarts.Add(new Standart { StandartName = "ГОСТ 123", StandartDescription = "Описание 1", StandartFileName = "220" });
-        //    db.Standarts.Add(new Standart { StandartName = "ТУ 321", StandartDescription = "Описание 2", StandartFileName = "180" });
-        //    db.Standarts.Add(new Standart { StandartName = "Стандарт ТПУ 2018", StandartDescription = "Описание 3", StandartFileName = "150" });
+            base.Seed(context);*/
 
-        //    base.Seed(db);
-        //}
+            //context.Newss.Add(new News { NewsId = 1, NewsTitle = "Название 1", NewsContent = "220" });
+            
+            //base.Seed(context);
+        }        
     }
 }

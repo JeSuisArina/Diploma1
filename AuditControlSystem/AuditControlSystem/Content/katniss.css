@@ -12216,7 +12216,7 @@ textarea.parsley-success:focus {
     right: 0;
     height: 60px;
     align-items: center;
-    color: black;
+    color: #fff;
     background-color: #005400;
     display: flex;
     align-items: center;
@@ -12358,7 +12358,7 @@ textarea.parsley-success:focus {
 .kt-headpanel-right .user-profile-nav a {
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 0px;
   height: 36px;
   color: #868e96;
   font-size: 13px;

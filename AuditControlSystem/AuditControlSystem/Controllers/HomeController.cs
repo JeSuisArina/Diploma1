@@ -8,15 +8,9 @@ using AuditControlSystem.Models;
 namespace AuditControlSystem.Controllers
 {
     public class HomeController : Controller
-    {
-        AuditContext db = new AuditContext();
-
+    { 
         public ActionResult Index()
         {
-            // получаем из бд все объекты Standarts
-            IEnumerable<Standart> standarts = db.Standarts;
-            // передаем все объекты в динамическое свойство Standarts в ViewBag
-            ViewBag.Standarts = standarts;
             return View();
         }
 

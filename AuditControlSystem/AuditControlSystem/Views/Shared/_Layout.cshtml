@@ -25,7 +25,7 @@
         <label class="kt-sidebar-label">Навигация</label>
         <ul class="nav kt-sideleft-menu">
             <li class="nav-item">
-                <a href="../Home/Index" class="nav-link">
+                <a href="../News/Index" class="nav-link">
                     <i class="icon ion-ios-home-outline"></i>
                     <span>Главная страница</span>
                 </a>
@@ -51,7 +51,7 @@
                 <ul class="nav-sub">
                     <li class="nav-item"><a href="accordion.html" class="nav-link">Просмотреть мои заявки</a></li>
                     <li class="nav-item"><a href="alerts.html" class="nav-link">Подать заявку</a></li>
-                    <li class="nav-item"><a href="buttons.html" class="nav-link">Buttons</a></li>
+                    <li class="nav-item"><a href="buttons.html" class="nav-link">Просмотреть заявки пользователей</a></li>
                 </ul>
             </li><!-- nav-item -->
             <li class="nav-item">
@@ -72,7 +72,7 @@
                     <span>Подразделения ...</span>
                 </a>
                 <ul class="nav-sub">
-                    <li class="nav-item"><a href="accordion.html" class="nav-link">Список подразделений</a></li>
+                    <li class="nav-item"><a href="../Subdivisions/Index" class="nav-link">Список подразделений</a></li>
                     <li class="nav-item"><a href="alerts.html" class="nav-link">Добавить подразделение</a></li>
                 </ul>
             </li><!-- nav-item -->
@@ -90,40 +90,20 @@
     </div>
 
 <!-- ##### HEAD PANEL ##### -->
-<div class="kt-headpanel"><a href="Index" style="font-size: 24px">Система сопровождения внутреннего аудита</a>
-<div class="kt-headpanel-right">
+<div class="kt-headpanel"><a href="../News/Index" style="font-size: 24px">Система сопровождения внутреннего аудита</a>
+    <div class="kt-headpanel-right">@Html.Partial("_LoginPartial")</div>    
 </div>
-    <div class="dropdown dropdown-profile">
-        <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
-            @*<img src="../img/img3.jpg" class="wd-32 rounded-circle" alt="">*@
-            <span class="logged-name"><span class="hidden-xs-down">Фамилия Имя Отчество</span> <i class="fa fa-angle-down mg-l-3"></i></span>
-        </a>
-        <div class="dropdown-menu wd-200">
-            <ul class="list-unstyled user-profile-nav">
-                <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
-                <li><a href=""><i class="icon ion-ios-gear-outline"></i> Settings</a></li>
-                <li><a href=""><i class="icon ion-ios-download-outline"></i> Downloads</a></li>
-                <li><a href=""><i class="icon ion-ios-star-outline"></i> Favorites</a></li>
-                <li><a href=""><i class="icon ion-ios-folder-outline"></i> Collections</a></li>
-                <li><a href=""><i class="icon ion-power"></i> Sign Out</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    <div class="kt-breadcrumb">
-        <nav class="breadcrumb">
-            <a class="breadcrumb-item" href="index.html">@ViewBag.Pass</a>
-            <span class="breadcrumb-item active">@ViewBag.Title</span>
-        </nav>
-    </div><!-- kt-breadcrumb -->
+<div class="kt-breadcrumb">
+    <nav class="breadcrumb">
+        <a class="breadcrumb-item" href="index.html">@ViewBag.Pass</a>
+        <span class="breadcrumb-item active">@ViewBag.Title</span>
+    </nav>
+</div><!-- kt-breadcrumb -->
     <!-- ##### MAIN PANEL ##### -->
-    <div class="kt-mainpanel">
-        <div class="kt-pagetitle">
-            <h5>@ViewBag.Pagetitle</h5>
-        </div> @*kt-pagetitle*@
-
-        <div class="kt-pagebody">
-    </div>
+<div class="kt-mainpanel">
+    <div class="kt-pagetitle">
+        <h5>@ViewBag.Pagetitle</h5>
+    </div> @*kt-pagetitle*@
 </div>
     
        
