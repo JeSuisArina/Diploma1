@@ -8,7 +8,7 @@ namespace AuditControlSystem.Models
 {
     public class AuditContext : DbContext
     {
-        public AuditContext() : base("DefaultConnection") { }
+        public AuditContext() { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }

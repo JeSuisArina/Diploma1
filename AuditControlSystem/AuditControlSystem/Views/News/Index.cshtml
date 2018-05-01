@@ -27,30 +27,40 @@
     <body>
         <!-- ##### MAIN PANEL ##### -->
         <div class="kt-mainpanel">
+            <div class="kt-pagetitle">
+                <h5>@ViewBag.Pagetitle</h5>
+            </div> @*kt-pagetitle*@
             <div class="kt-pagebody">
 
-                @foreach (var item in Model)
-                {
-                    <div class="col-md mg-t-20 mg-md-t-0">
-                        <p class="mg-b-20 mg-sm-b-30">@Html.ActionLink("Добавить новость", "Create")</p>
-                        <div class="row">
-                            <div class="col-md">
-                                <div class="card bg-gray-200">
-                                    <div class="card-body">
-                                        <p class="mg-b-0">@Html.DisplayFor(modelItem => item.NewsContent)</p>
-                                    </div><!-- card-body -->
-                                    <div class="card-footer bg-gray-400 tx-right">
-                                        @Html.DisplayFor(modelItem => item.NewsTitle)
-                                        @Html.ActionLink("Edit", "Изменить", new { id = item.NewsId }) |
-                                        @Html.ActionLink("Details", "Подробнее", new { id = item.NewsId }) |
-                                        @Html.ActionLink("Delete", "Удалить", new { id = item.NewsId })
-                                    </div><!-- card-footer -->
-                                </div><!-- card -->
-                            </div><!-- col -->
-                        </div><!-- row -->
-                    </div><!-- card -->
-                }
-            </div><!-- kt-pagebody -->
-        </div><!-- kt-mainpanel -->
+            @*@foreach (var item in Model)*@
+            {
+            <div class="col-md mg-t-20 mg-md-t-0">
+                <p class="mg-b-20 mg-sm-b-30">@Html.ActionLink("Добавить новость", "Create")</p>
+                <div class="row">
+                    <div class="col-md">
+                        <div class="card bg-gray-200">
+                            <div class="card-body">
+                                <p class="mg-b-0">@*@Html.DisplayFor(modelItem => item.NewsContent)*@</p>
+                            </div><!-- card-body -->
+                            <div class="card-footer bg-gray-400 tx-right">
+                                @*@Html.DisplayFor(modelItem => item.NewsTitle)
+                                @Html.ActionLink("Edit", "Изменить", new { id = item.NewsId }) |
+                                @Html.ActionLink("Details", "Подробнее", new { id = item.NewsId }) |
+                                @Html.ActionLink("Delete", "Удалить", new { id = item.NewsId })*@
+                            </div><!-- card-footer -->
+                        </div><!-- card -->
+                    </div><!-- col -->
+                </div><!-- row -->
+            </div><!-- card -->
+            }
+        </div><!-- kt-pagebody -->
+        </div>
+
+        <div class="container body-content">
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year – TPU</p>
+            </footer>
+        </div>
     </body>
 </html>
