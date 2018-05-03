@@ -12409,7 +12409,7 @@ textarea.parsley-success:focus {
 .kt-mainpanel {
   position: relative;
   min-height: 100vh;
-  padding-top: 80px;
+  padding-top: 101px;
   margin-left: 0;
   transition: all 0.2s ease-in-out;
 }

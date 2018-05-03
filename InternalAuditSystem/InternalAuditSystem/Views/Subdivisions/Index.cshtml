@@ -1,10 +1,11 @@
-﻿@model IEnumerable<InternalAuditSystem.Models.Subdivision>
+﻿@model IEnumerable<InternalAuditSystem.Models.EntityModels.Subdivisions>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Подразделения";
-    ViewBag.Pagetitle = "Подразделения";
-    ViewBag.Pass = "Главная страница";
+
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                ViewBag.Title = "Подразделения";
+                ViewBag.Pagetitle = "Подразделения";
+                ViewBag.Pass = "Главная страница";
 }
 
 <!DOCTYPE html>
@@ -24,11 +25,19 @@
 </head>
 
 <body>
+    <div class="kt-breadcrumb">
+        <nav class="breadcrumb">
+            <a class="breadcrumb-item" href="index.html">Главная страница</a>
+            <span class="breadcrumb-item active">Сотрудники</span>
+        </nav>
+    </div><!-- kt-breadcrumb -->
     <div class="kt-mainpanel">
+        <div class="kt-pagetitle">
+            <h5>@ViewBag.Pagetitle</h5>
+        </div> @*kt-pagetitle*@
         <div class="kt-pagebody">
             <div class="card pd-20 pd-sm-40">
-                <h6 class="card-body-title">Подразделения</h6>
-                <p class="mg-b-20 mg-sm-b-30">Using the most basic table markup.</p>
+                <p class="mg-b-20 mg-sm-b-30">Список подразделений и отделов Томского Политехничесткого Университета.</p>
                 <p>
                     @Html.ActionLink("Добавить подразделение", "Create")
                 </p>
@@ -38,10 +47,9 @@
                             <tr>
                                 <th>
                                     <label class="ckbox mg-b-0">
-                                        <input type="checkbox"><span></span>
                                     </label>
                                 </th>
-                                <th>@Html.DisplayNameFor(model => model.SubdivisionName)</th>
+                                <th>Название подразделения</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,16 +58,15 @@
                                 <tr>
                                     <td>
                                         <label class="ckbox mg-b-0">
-                                            <input type="checkbox"><span></span>
                                         </label>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.SubdivisionName)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.SubdivisionId }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.SubdivisionId }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.SubdivisionId })
+                                        @Html.ActionLink("Просмотреть сертификаты", "Details", new { id = item.SubdivisionId }) |
+                                        @* @Html.ActionLink("Details", "Details", new { id = item.SubdivisionId }) |*@
+                                        @Html.ActionLink("Удалить подразделение", "Delete", new { id = item.SubdivisionId })
                                     </td>
                                 </tr>
                             }

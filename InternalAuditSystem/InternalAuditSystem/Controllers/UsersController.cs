@@ -10,107 +10,107 @@ using InternalAuditSystem.Models.EntityModels;
 
 namespace InternalAuditSystem.Controllers
 {
-    public class SubdivisionsController : Controller
+    public class UsersController : Controller
     {
         private AuditContext db = new AuditContext();
 
-        // GET: Subdivisions
+        // GET: Users
         public ActionResult Index()
         {
-            return View(db.Subdivisions.ToList());
+            return View(db.UsersView.ToList());
         }
 
-        // GET: Subdivisions/Details/5
-        public ActionResult Details(int? id)
+        // GET: Users/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subdivisions subdivisions = db.Subdivisions.Find(id);
-            if (subdivisions == null)
+            UsersView usersView = db.UsersView.Find(id);
+            if (usersView == null)
             {
                 return HttpNotFound();
             }
-            return View(subdivisions);
+            return View(usersView);
         }
 
-        // GET: Subdivisions/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Subdivisions/Create
+        // POST: Users/Create
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubdivisionId,SubdivisionName")] Subdivisions subdivisions)
+        public ActionResult Create([Bind(Include = "UserLastName,UserName,UserEmail,UserPhone,SubdivisionName,UserId,Role,UserMiddleName")] UsersView usersView)
         {
             if (ModelState.IsValid)
             {
-                db.Subdivisions.Add(subdivisions);
+                db.UsersView.Add(usersView);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(subdivisions);
+            return View(usersView);
         }
 
-        // GET: Subdivisions/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Users/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subdivisions subdivisions = db.Subdivisions.Find(id);
-            if (subdivisions == null)
+            UsersView usersView = db.UsersView.Find(id);
+            if (usersView == null)
             {
                 return HttpNotFound();
             }
-            return View(subdivisions);
+            return View(usersView);
         }
 
-        // POST: Subdivisions/Edit/5
+        // POST: Users/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SubdivisionId,SubdivisionName")] Subdivisions subdivisions)
+        public ActionResult Edit([Bind(Include = "UserLastName,UserName,UserEmail,UserPhone,SubdivisionName,UserId,Role,UserMiddleName")] UsersView usersView)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(subdivisions).State = EntityState.Modified;
+                db.Entry(usersView).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(subdivisions);
+            return View(usersView);
         }
 
-        // GET: Subdivisions/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Users/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subdivisions subdivisions = db.Subdivisions.Find(id);
-            if (subdivisions == null)
+            UsersView usersView = db.UsersView.Find(id);
+            if (usersView == null)
             {
                 return HttpNotFound();
             }
-            return View(subdivisions);
+            return View(usersView);
         }
 
-        // POST: Subdivisions/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Subdivisions subdivisions = db.Subdivisions.Find(id);
-            db.Subdivisions.Remove(subdivisions);
+            UsersView usersView = db.UsersView.Find(id);
+            db.UsersView.Remove(usersView);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

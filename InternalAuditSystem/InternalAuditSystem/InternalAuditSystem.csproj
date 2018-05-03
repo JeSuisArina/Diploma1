@@ -194,23 +194,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\SubdivisionsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Adjustment.cs" />
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\Application.cs" />
-    <Compile Include="Models\AuditContext.cs" />
+    <Compile Include="Models\EntityModels\AdjustmentView.cs" />
+    <Compile Include="Models\EntityModels\ApplicationsView.cs" />
+    <Compile Include="Models\EntityModels\AuditContext.cs" />
+    <Compile Include="Models\EntityModels\NewsView.cs" />
+    <Compile Include="Models\EntityModels\SertificatesView.cs" />
+    <Compile Include="Models\EntityModels\Standarts.cs" />
+    <Compile Include="Models\EntityModels\Subdivisions.cs" />
+    <Compile Include="Models\EntityModels\UsersView.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\News.cs" />
-    <Compile Include="Models\Sertificate.cs" />
-    <Compile Include="Models\Standart.cs" />
-    <Compile Include="Models\Subdivision.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -273,16 +272,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\News\Create.cshtml" />
-    <Content Include="Views\News\Delete.cshtml" />
-    <Content Include="Views\News\Details.cshtml" />
-    <Content Include="Views\News\Edit.cshtml" />
-    <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Subdivisions\Create.cshtml" />
     <Content Include="Views\Subdivisions\Delete.cshtml" />
     <Content Include="Views\Subdivisions\Details.cshtml" />
     <Content Include="Views\Subdivisions\Edit.cshtml" />
     <Content Include="Views\Subdivisions\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

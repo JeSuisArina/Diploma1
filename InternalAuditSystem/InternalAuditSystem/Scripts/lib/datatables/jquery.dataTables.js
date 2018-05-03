@@ -1,4 +1,4 @@
-/*! DataTables 1.10.16
+﻿/*! DataTables 1.10.16
  * ©2008-2017 SpryMedia Ltd - datatables.net/license
  */
 
@@ -11338,7 +11338,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "Вперед",
 	
 	
 				/**
@@ -11361,7 +11361,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "Назад"
 			},
 	
 			/**
@@ -11402,8 +11402,7 @@
 			 * * `\_PAGES\_` - Total number of pages of data in the table
 			 *
 			 *  @type string
-			 *  @default Showing _START_ to _END_ of _TOTAL_ entries
-			 *
+			 *  @default Отображены с _START_ по _END_ из _TOTAL_ строк			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.info
 			 *
@@ -11416,7 +11415,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Отображены с _START_ по _END_ из _TOTAL_ строк",
 	
 	
 			/**
@@ -11445,7 +11444,7 @@
 			 * to the information (`info`) to give an idea of how strong the filtering
 			 * is. The variable _MAX_ is dynamically updated.
 			 *  @type string
-			 *  @default (filtered from _MAX_ total entries)
+			 *  @default (всего отсортировано _MAX_ строк)
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.infoFiltered
@@ -11459,7 +11458,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(всего отсортировано _MAX_ строк)",
 	
 	
 			/**

@@ -82,7 +82,7 @@
                     <span>Пользователи</span>
                 </a>
                 <ul class="nav-sub">
-                    <li class="nav-item"><a href="accordion.html" class="nav-link">Список пользователей</a></li>
+                    <li class="nav-item"><a href="../Users/Index" class="nav-link">Список пользователей</a></li>
                     <li class="nav-item"><a href="alerts.html" class="nav-link">Добавить пользователя</a></li>
                 </ul>
             </li><!-- nav-item -->
@@ -94,13 +94,8 @@
         <a href="../News/Index" style="font-size: 24px">Система сопровождения внутреннего аудита</a>
         <div class="kt-headpanel-right">@Html.Partial("_LoginPartial")</div>
     </div>
-    <div class="kt-breadcrumb">
-        <nav class="breadcrumb">
-            <a class="breadcrumb-item" href="index.html">@ViewBag.Pass</a>
-            <span class="breadcrumb-item active">@ViewBag.Title</span>
-        </nav>
-    </div><!-- kt-breadcrumb -->
 
+    @RenderSection("scripts", required: false)
     @RenderBody()
 
     <script src="../../Scripts/lib/jquery/jquery.js"></script>
