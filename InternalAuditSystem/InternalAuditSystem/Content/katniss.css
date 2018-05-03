@@ -262,10 +262,10 @@ sup {
 }
 
 a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  -webkit-text-decoration-skip: objects;
+    color: #3CB371;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
 }
 a:hover {
   color: #0056b3;
@@ -8249,27 +8249,27 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 .btn-default {
-  color: #fff;
-  background-color: #3B6998;
-  border-color: #386491;
+    color: #fff;
+    background-color: #3CB371;
+    border-color: #3CB371;
 }
-.btn-default:hover {
-  color: #fff;
-  background-color: #30567c;
-  border-color: #2a4b6c;
-}
+    .btn-default:hover {
+        color: #fff;
+        background-color: #2E8B57;
+        border-color: #2E8B57;
+    }
 .btn-default:focus, .btn-default.focus {
   box-shadow: 0 0 0 3px rgba(56, 100, 145, 0.5);
 }
-.btn-default.disabled, .btn-default:disabled {
-  background-color: #3B6998;
-  border-color: #386491;
-}
-.btn-default:active, .btn-default.active, .show > .btn-default.dropdown-toggle {
-  background-color: #30567c;
-  background-image: none;
-  border-color: #2a4b6c;
-}
+    .btn-default.disabled, .btn-default:disabled {
+        background-color: #2E8B57;
+        border-color: #2E8B57;
+    }
+    .btn-default:active, .btn-default.active, .show > .btn-default.dropdown-toggle {
+        background-color: #2E8B57;
+        background-image: none;
+        border-color: #2E8B57;
+    }
 
 .btn-indigo {
   color: #fff;
@@ -10302,12 +10302,12 @@ table.dataTable.no-footer {
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {
   box-shadow: none;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.current:focus {
-  background-color: #17a2b8;
-  background-image: none;
-  border-color: transparent;
-  color: #fff !important;
-}
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.current:focus {
+        background-color: #3CB371;
+        background-image: none;
+        border-color: transparent;
+        color: #fff !important;
+    }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:focus {
   background-color: #e9ecef;
   color: #adb5bd !important;

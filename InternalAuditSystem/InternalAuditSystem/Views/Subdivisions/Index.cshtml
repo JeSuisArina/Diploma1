@@ -39,7 +39,7 @@
             <div class="card pd-20 pd-sm-40">
                 <p class="mg-b-20 mg-sm-b-30">Список подразделений и отделов Томского Политехничесткого Университета.</p>
                 <p>
-                    @Html.ActionLink("Добавить подразделение", "Create")
+                    <a href="../Subdivisions/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
                 </p>
                 <div class="table-responsive">
                     <table class="table mg-b-0">
@@ -49,26 +49,28 @@
                                     <label class="ckbox mg-b-0">
                                     </label>
                                 </th>
-                                <th>Название подразделения</th>
+                                <th class="wd-65p">Название подразделения</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        <label class="ckbox mg-b-0">
-                                        </label>
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SubdivisionName)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Просмотреть сертификаты", "Details", new { id = item.SubdivisionId }) |
-                                        @* @Html.ActionLink("Details", "Details", new { id = item.SubdivisionId }) |*@
-                                        @Html.ActionLink("Удалить подразделение", "Delete", new { id = item.SubdivisionId })
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <label class="ckbox mg-b-0">
+                                    </label>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SubdivisionName)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Просмотреть сертификаты", "Details", new { id = item.SubdivisionId })
+                                </td>
+                                    @* @Html.ActionLink("Details", "Details", new { id = item.SubdivisionId }) |*@
+                                <td>
+                                    @Html.ActionLink("Удалить подразделение", "Delete", new { id = item.SubdivisionId })
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
