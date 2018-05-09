@@ -16,7 +16,7 @@ namespace InternalAuditSystem
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "News", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "NewsController", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

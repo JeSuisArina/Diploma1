@@ -1,33 +1,83 @@
 ﻿@model IEnumerable<InternalAuditSystem.Models.EntityModels.NewsView>
 
 @{
-    ViewBag.Title = "Index";
+                /**/
+
+
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                ViewBag.Title = "Главная страница";
+                ViewBag.Pagetitle = "Новости";
 }
 
-<h2>Index</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserMiddleName)
-        </th>
-        <th></th>
-    </tr>
+    <title>@ViewBag.Title</title>
+    <!-- vendor css -->
+    <link href="../../Scripts/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="../../Scripts/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="../../Scripts/lib/highlightjs/github.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/katniss.css">
+</head>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserMiddleName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<body>
+    <div class="kt-breadcrumb">
+        <nav class="breadcrumb">
+            <span class="breadcrumb-item active">Главная страница</span>
+        </nav>
+    </div><!-- kt-breadcrumb -->
+    <div class="kt-mainpanel">
+        <div class="kt-pagetitle">
+            <h5>@ViewBag.Pagetitle</h5>
+        </div> @*kt-pagetitle*@
+        <div class="kt-pagebody">
+            <div class="card pd-20 pd-sm-40">
+                <p class="mg-b-20 mg-sm-b-30">Последние обновления по стандартам и другие новости.</p>
+
+                <p>
+                    <a href="../News/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
+                </p>
+
+                <div class="row">
+                        @foreach (var item in Model)
+    {
+
+                    <div class="card pd-15 pd-sm-15 mg-25 bg-gray-200">
+                        <div class="card-body">
+                            <h5 class="card-body-title">@Html.DisplayFor(modelItem => item.NewsTitle)</h5>
+                            <p class="card-subtitle tx-normal mg-b-15">
+                                Прикрепил(а):
+                                @Html.DisplayFor(modelItem => item.UserLastName)
+                                @Html.DisplayFor(modelItem => item.UserName)
+                                @Html.DisplayFor(modelItem => item.UserMiddleName)
+                                В @Html.DisplayFor(modelItem => item.NewsDateTime)
+                            </p>                            
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.NewsContent) </p>
+                            <a class="card-link">@Html.ActionLink("Изменить ", "Edit", new { id = item.NewsId })</a>
+                            <a class="card-link">@Html.ActionLink("Удалить ", "Delete", new { id = item.NewsId })</a>
+                        </div>
+                    </div><!-- card -->
 }
+                   
+                </div><!-- row -->
+            </div><!-- card --> 
+        </div>
+        <div class="kt-footer">
+            <span> &copy; TPU - @DateTime.Now.Year </span>
+        </div><!-- kt-footer -->
+    </div>
 
-</table>
+    <script src="../../Scripts/lib/jquery/jquery.js"></script>
+    <script src="../../Scripts/lib/popper.js/popper.js"></script>
+    <script src="../../Scripts/lib/bootstrap/bootstrap.js"></script>
+    <script src="../../Scripts/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../../Scripts/lib/moment/moment.js"></script>
+    <script src="../../Scripts/lib/highlightjs/highlight.pack.js"></script>
+    <script src="../../Scripts/js/katniss.js"></script>
+</body>
+</html>

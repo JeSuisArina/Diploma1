@@ -8,6 +8,13 @@ namespace InternalAuditSystem.Models.EntityModels
 
     public partial class Standarts
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Standarts()
+        {
+            Applications = new HashSet<Applications>();
+            Sertificates = new HashSet<Sertificates>();
+        }
+
         [Key]
         public int StandartId { get; set; }
 
@@ -21,5 +28,11 @@ namespace InternalAuditSystem.Models.EntityModels
 
         [Required]
         public byte[] StandartFile { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Applications> Applications { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sertificates> Sertificates { get; set; }
     }
 }

@@ -46,16 +46,18 @@ namespace InternalAuditSystem.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NewsContent,NewsDateTime,UserLastName,UserName,NewsId,NewsTitle,UserMiddleName")] NewsView newsView)
+        public ActionResult Create([Bind(Include = "NewsContent,NewsDateTime,UserId,NewsId,NewsTitle")] News news)
         {
             if (ModelState.IsValid)
             {
-                db.NewsView.Add(newsView);
+                news.UserId = 1;
+                news.NewsDateTime = DateTime.Now;
+                db.News.Add(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(newsView);
+            return View(news);
         }
 
         // GET: News/Edit/5
