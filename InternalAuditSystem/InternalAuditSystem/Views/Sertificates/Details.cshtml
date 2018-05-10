@@ -1,0 +1,50 @@
+﻿@model InternalAuditSystem.Models.EntityModels.Sertificates
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sertificates</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Standarts.StandartName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Standarts.StandartName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subdivisions.SubdivisionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subdivisions.SubdivisionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SertificateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SertificateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SertificateShelfLife)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SertificateShelfLife)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SertificateId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

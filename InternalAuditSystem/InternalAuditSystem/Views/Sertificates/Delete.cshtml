@@ -1,0 +1,56 @@
+﻿@model InternalAuditSystem.Models.EntityModels.Sertificates
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sertificates</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Standarts.StandartName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Standarts.StandartName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subdivisions.SubdivisionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subdivisions.SubdivisionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SertificateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SertificateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SertificateShelfLife)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SertificateShelfLife)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

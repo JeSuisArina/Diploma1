@@ -8627,7 +8627,7 @@ a.text-dark:focus, a.text-dark:hover {
   font-size: 14px;
 }
 .accordion .card-header a, .accordion .card-header a:hover, .accordion .card-header a:focus {
-  background-color: #3B6998;
+  background-color: #3CB371;
   color: #fff;
 }
 .accordion .card-header a.collapsed {
@@ -10467,7 +10467,7 @@ table.dataTable.no-footer {
   background-color: #e9ecef;
 }
 .wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
-  background-color: #3B6998;
+    background-color: #3CB371;
 }
 .wizard > .steps .current a .number, .wizard > .steps .current a:hover .number, .wizard > .steps .current a:active .number {
   border-color: #fff;
@@ -10506,14 +10506,14 @@ table.dataTable.no-footer {
   display: flex;
   justify-content: space-between;
 }
-.wizard > .actions a,
-.wizard > .actions a:hover,
-.wizard > .actions a:active {
-  background-color: #3B6998;
-  padding: 9px 20px;
-  line-height: 1.6;
-  border-radius: 0;
-}
+    .wizard > .actions a,
+    .wizard > .actions a:hover,
+    .wizard > .actions a:active {
+        background-color: #3CB371;
+        padding: 9px 20px;
+        line-height: 1.6;
+        border-radius: 0;
+    }
 .wizard > .actions .disabled a,
 .wizard > .actions .disabled a:hover,
 .wizard > .actions .disabled a:active {
@@ -11001,12 +11001,12 @@ table.dataTable.no-footer {
   border: 0;
   box-shadow: none;
 }
-.medium-editor-toolbar li button {
-  background-color: #3B6998;
-  background-image: none;
-  box-shadow: none;
-  border-right: 0;
-}
+    .medium-editor-toolbar li button {
+        background-color: #3CB371;
+        background-image: none;
+        box-shadow: none;
+        border-right: 0;
+    }
 .medium-editor-toolbar li button:hover, .medium-editor-toolbar li button:focus {
   background-color: #386491;
   color: #17a2b8;
@@ -11027,7 +11027,7 @@ table.dataTable.no-footer {
 }
 
 .medium-toolbar-arrow-under::after {
-  border-top-color: #3B6998;
+    border-top-color: #3CB371;
 }
 
 /* -------------------------------------- */
@@ -12277,9 +12277,9 @@ textarea.parsley-success:focus {
 .kt-headpanel-right .dropdown-notification .dropdown-menu-header a {
   color: #868e96;
 }
-.kt-headpanel-right .dropdown-notification .dropdown-menu-header a:hover, .kt-headpanel-right .dropdown-notification .dropdown-menu-header a:focus {
-  color: #3B6998;
-}
+    .kt-headpanel-right .dropdown-notification .dropdown-menu-header a:hover, .kt-headpanel-right .dropdown-notification .dropdown-menu-header a:focus {
+        color: #3CB371;
+    }
 .kt-headpanel-right .dropdown-notification .media-list-link {
   display: block;
   color: #868e96;
@@ -12308,9 +12308,9 @@ textarea.parsley-success:focus {
 .kt-headpanel-right .dropdown-notification .media-list-footer a {
   color: #868e96;
 }
-.kt-headpanel-right .dropdown-notification .media-list-footer a:hover, .kt-headpanel-right .dropdown-notification .media-list-footer a:focus {
-  color: #3B6998;
-}
+    .kt-headpanel-right .dropdown-notification .media-list-footer a:hover, .kt-headpanel-right .dropdown-notification .media-list-footer a:focus {
+        color: #3CB371;
+    }
 .kt-headpanel-right .nav-link {
   padding-left: 0;
   padding-right: 0;
@@ -12358,10 +12358,10 @@ textarea.parsley-success:focus {
   font-size: 13px;
   transition: all 0.2s ease-in-out;
 }
-.kt-headpanel-right .user-profile-nav a:hover, .kt-headpanel-right .user-profile-nav a:focus {
-  color: #3B6998;
-  background-color: #e9ecef;
-}
+    .kt-headpanel-right .user-profile-nav a:hover, .kt-headpanel-right .user-profile-nav a:focus {
+        color: #3CB371;
+        background-color: #e9ecef;
+    }
 .kt-headpanel-right .user-profile-nav .icon {
   display: inline-block;
   width: 20px;
@@ -12811,9 +12811,9 @@ textarea.parsley-success:focus {
 }
 
 .signbox-header {
-  padding: 30px 0;
-  text-align: center;
-  background-color: #3B6998;
+    padding: 30px 0;
+    text-align: center;
+    background-color: #3CB371;
 }
 .signbox-header h4 {
   color: #fff;
@@ -12972,7 +12972,7 @@ textarea.parsley-success:focus {
 }
 
 .bg-app-primary {
-  background-color: #3B6998;
+    background-color: #3CB371;
 }
 
 /* -------------------------------------- */
@@ -13113,7 +13113,7 @@ textarea.parsley-success:focus {
 }
 
 .bd-br-primary {
-  border-color: #3B6998;
+    border-color: #3CB371;
 }
 
 .bd-gray-100 {
@@ -45578,7 +45578,7 @@ a.hover-white-8:hover, a.hover-white-8:focus {
 }
 
 .tx-br-primary {
-  color: #3B6998;
+    color: #3CB371;
 }
 
 .tx-white-2 {

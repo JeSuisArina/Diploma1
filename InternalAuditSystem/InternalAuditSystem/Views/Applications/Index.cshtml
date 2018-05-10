@@ -1,12 +1,13 @@
-﻿@model IEnumerable<InternalAuditSystem.Models.EntityModels.UsersView>
+﻿@model IEnumerable<InternalAuditSystem.Models.EntityModels.ApplicationsView>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Сотрудники";
-    ViewBag.Pagetitle = "Сотрудники";
-    ViewBag.Pass = "Главная страница";
-}
+    /**/
 
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Главная страница";
+    ViewBag.Pagetitle = "Заявки";
+}
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +16,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Сотрудники</title>
+    <title>@ViewBag.Title</title>
     <!-- vendor css -->
     <link href="../../Scripts/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../../Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
@@ -29,32 +30,28 @@
 <body>
     <div class="kt-breadcrumb">
         <nav class="breadcrumb">
-            <a class="breadcrumb-item" href="../News/Index">Главная страница</a>
-            <span class="breadcrumb-item active">Сотрудники</span>
+            <span class="breadcrumb-item active">Главная страница</span>
         </nav>
     </div><!-- kt-breadcrumb -->
     <div class="kt-mainpanel">
         <div class="kt-pagetitle">
-            <h5>Сотрудники</h5>
-        </div>
+            <h5>@ViewBag.Pagetitle</h5>
+        </div> @*kt-pagetitle*@
         <div class="kt-pagebody">
             <div class="card pd-20 pd-sm-40">
-                <p class="mg-b-20 mg-sm-b-30">Список зарегистрированных пользователей.</p>
-                <a href="../Users/Create" style="font-size: 36px"><i class="icon ion-ios-personadd-outline"></i></a>
-                
+                <p class="mg-b-20 mg-sm-b-30">Заявки всех пользователей.</p>
+
                 <div class="table-wrapper">
                     <div class="dataTables_length" id="datatable1_length">
 
                         <table id="datatable1" class="table display responsive nowrap">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p">Фамилия</th>
-                                    <th class="wd-10p">Имя</th>
-                                    <th class="wd-15p">Отчество</th>
-                                    <th class="wd-15p">Подразделение</th>
-                                    <th class="wd-10p">Роль</th>
-                                    <th class="wd-15p">E-mail</th>
-                                    <th class="wd-10p">Телефон</th>
+                                    <th class="wd-10p">Дата</th>
+                                    <th class="wd-30p">ФИО заявителя</th>
+                                    <th class="wd-15p">Стандарт</th>
+                                    <th class="wd-20p">Комментарий</th>
+                                    <th class="wd-10p">Файл</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -64,48 +61,40 @@
                                 {
                                     <tr>
                                         <td>
+                                            @Html.DisplayFor(modelItem => item.ApplicationDateTime)
+                                        </td>
+                                        <td>
                                             @Html.DisplayFor(modelItem => item.UserLastName)
-                                        </td>
-                                        <td>
                                             @Html.DisplayFor(modelItem => item.UserName)
-                                        </td>
-                                        <td>
                                             @Html.DisplayFor(modelItem => item.UserMiddleName)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.SubdivisionName)
+                                            @Html.DisplayFor(modelItem => item.StandartName)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Role)
+                                            @Html.DisplayFor(modelItem => item.ApplicationContent)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.UserEmail)
+                                            @Html.DisplayFor(modelItem => item.ApplicationFile)
+                                        </td>                        
+                                        <td>
+                                            @Html.ActionLink("Заявки", "Details", new { id=item.ApplicationId })
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.UserPhone)
-                                        </td>
-
-                                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-                                        <td>
-                                            @Html.ActionLink("Заявки", "Details", new { /* id=item.PrimaryKey */ })
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Удалить", "Delete", new { /* id=item.PrimaryKey */ })
+                                            @Html.ActionLink("Удалить", "Delete", new { id=item.ApplicationId })
                                         </td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
+                </div><!-- row -->
+            </div><!-- card -->
         </div>
         <div class="kt-footer">
-            <span> &copy; TPU - 2018 </span>
+            <span> &copy; TPU - @DateTime.Now.Year </span>
         </div><!-- kt-footer -->
     </div>
-
-
 
     <script src="../../Scripts/lib/jquery/jquery.js"></script>
     <script src="../../Scripts/lib/popper.js/popper.js"></script>
@@ -117,16 +106,16 @@
     <script src="../../Scripts/lib/datatables-responsive/dataTables.responsive.js"></script>
     <script src="../../Scripts/lib/select2/js/select2.min.js"></script>
     <script src="../../Scripts/js/katniss.js"></script>
-    
+
     <script>
         $('#datatable1').DataTable({
-                    responsive: true,
-                    language: {
-                        searchPlaceholder: 'Фильтр...',
-                        sSearch: '',
-                        lengthMenu: '_MENU_ строк/страница',
-                    }
-            });
-        </script>
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Фильтр...',
+                sSearch: '',
+                lengthMenu: '_MENU_ строк/страница',
+            }
+        });
+    </script>
 </body>
 </html>

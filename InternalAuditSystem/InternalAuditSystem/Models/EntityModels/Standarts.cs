@@ -16,7 +16,8 @@ namespace InternalAuditSystem.Models.EntityModels
         }
 
         [Key]
-        public int StandartId { get; set; }
+        [StringLength(10)]
+        public string StandartId { get; set; }
 
         [Required]
         [StringLength(30)]

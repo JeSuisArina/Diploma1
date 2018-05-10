@@ -51,11 +51,11 @@
                         <div class="card-body">
                             <h5 class="card-body-title">@Html.DisplayFor(modelItem => item.NewsTitle)</h5>
                             <p class="card-subtitle tx-normal mg-b-15">
-                                Прикрепил(а):
+                                Прикрепил(а)
                                 @Html.DisplayFor(modelItem => item.UserLastName)
                                 @Html.DisplayFor(modelItem => item.UserName)
                                 @Html.DisplayFor(modelItem => item.UserMiddleName)
-                                В @Html.DisplayFor(modelItem => item.NewsDateTime)
+                                в @Html.DisplayFor(modelItem => item.NewsDateTime)
                             </p>                            
                             <p class="card-text">@Html.DisplayFor(modelItem => item.NewsContent) </p>
                             <a class="card-link">@Html.ActionLink("Изменить ", "Edit", new { id = item.NewsId })</a>
