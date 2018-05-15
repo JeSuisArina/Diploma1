@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -46,16 +47,24 @@ namespace InternalAuditSystem.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserLastName,UserName,StandartName,ApplicationDateTime,ApplicationFile,ApplicationId,UserMiddleName,ApplicationContent")] ApplicationsView applicationsView)
+        public ActionResult Create([Bind(Include = "StandartId,ApplicationDateTime,ApplicationFile,ApplicationId,UserId,ApplicationContent")] Applications applications, HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid)
             {
-                db.ApplicationsView.Add(applicationsView);
+                byte[] fileData = null;
+                // считываем переданный файл в массив байтов
+                using (var binaryReader = new BinaryReader(uploadFile.InputStream))
+                {
+                    fileData = binaryReader.ReadBytes(uploadFile.ContentLength);
+                }
+                // установка массива байтов
+                applications.ApplicationFile = fileData;
+                db.Applications.Add(applications);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(applicationsView);
+            return View(applications);
         }
 
         // GET: Applications/Edit/5

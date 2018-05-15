@@ -1,41 +1,118 @@
-﻿@model InternalAuditSystem.Models.RegisterViewModel
+﻿@model Tuple<InternalAuditSystem.Models.RegisterViewModel, InternalAuditSystem.Models.EntityModels.Users>
+
 @{
     ViewBag.Title = "Регистрация";
 }
 
-<h2>@ViewBag.Title.</h2>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Создайте новую учетную запись.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Регистрация" />
-        </div>
-    </div>
-}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+        <title>@ViewBag.Title</title>
+        <!-- vendor css -->
+        <link href="../../Scripts/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="../../Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+        <link href="../../Scripts/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+        <link href="../../Scripts/lib/highlightjs/github.css" rel="stylesheet"> 
+        <link href="../../Scripts/lib/select2/css/select2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../Content/katniss.css">
+    </head>
+    <body>
+        <div class="signpanel-wrapper">
+            <div class="signbox signup">
+                <div class="signbox-header">
+                    <h4>Регистрация</h4>
+                    <p class="mg-b-0">Система сопровождения внутреннего аудита</p>
+                </div><!-- signbox-header -->
+                <div class="signbox-body">
+                    <div class="form-group">
+                        <label class="form-control-label">Email:</label>
+                        @Html.TextBoxFor(tuple => tuple.Item1.Email, new { @class = "form-control" })
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                        <label class="form-control-label">Фамилия:</label>
+                        @Html.TextBoxFor(tuple => tuple.Item2.UserLastName, new { @class = "form-control" })
+                    </div><!-- form-group -->
+                    <div class="row row-xs">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="form-control-label">Имя:</label>
+                                @Html.TextBoxFor(tuple => tuple.Item2.UserName, new { @class = "form-control" })
+                            </div><!-- form-group -->
+                        </div><!-- col -->
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="form-control-label">Отчество:</label>
+                                @Html.TextBoxFor(tuple => tuple.Item2.UserMiddleName, new { @class = "form-control" })
+                            </div><!-- form-group -->
+                        </div><!-- col -->
+                    </div><!-- row -->                    
+                    <div class="row row-xs">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="form-control-label">Пароль:</label>
+                                @Html.PasswordFor(tuple => tuple.Item1.Password, new { @class = "form-control" })
+                            </div><!-- form-group -->
+                        </div><!-- col -->
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label class="form-control-label">Повторите пароль:</label>
+                                @Html.PasswordFor(tuple => tuple.Item1.ConfirmPassword, new { @class = "form-control" })
+                            </div><!-- form-group -->
+                        </div><!-- col -->
+                    </div><!-- row -->
+
+                    <div class="form-group">
+                        <label class="form-control-label">Подразделение:</label>
+                        <select class="form-control select2" id="SubdivisionId">
+                            <option label="Выберите подразделение"></option>
+                            <option value="1">Отдел качества</option>                            
+                        </select>
+                    </div><!-- form-group -->
+
+                    <div class="form-group mg-b-20 tx-12">Нажимай кнопку "Зарегистрироваться" Вы принимаете наши <a href="">Условия использования</a> и нашу <a href="">Политику Конфиденциальности</a></div>
+
+                    <button type="submit" class="btn btn-dark btn-block">Зарегистрироваться</button>
+                    <div class="tx-center bd pd-10 mg-t-40">Уже зарегистрированы? <a href="page-signin.html">Войти</a></div>
+                </div><!-- signbox-body -->
+            </div><!-- signbox -->
+        </div><!-- signpanel-wrapper -->
+
+        <script src="../lib/jquery/jquery.js"></script>
+        <script src="../lib/popper.js/popper.js"></script>
+        <script src="../lib/bootstrap/bootstrap.js"></script>
+
+        <script src="../../Scripts/lib/jquery/jquery.js"></script>
+        <script src="../../Scripts/lib/popper.js/popper.js"></script>
+        <script src="../../Scripts/lib/bootstrap/bootstrap.js"></script>
+        <script src="../../Scripts/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+        <script src="../../Scripts/lib/moment/moment.js"></script>
+        <script src="../../Scripts/lib/highlightjs/highlight.pack.js"></script>
+        <script src="../../Scripts/lib/select2/js/select2.min.js"></script>
+        <script src="../../Scripts/lib/parsleyjs/parsley.js"></script>
+
+        <script src="../../Scripts/js/katniss.js"></script>
+        <script>
+            $(function () {
+                'use strict';
+                $('.select2').select2({
+                    minimumResultsForSearch: Infinity
+                });
+
+                $('#selectForm').parsley();
+            })
+        </script>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+    </body>
+</html>
 }

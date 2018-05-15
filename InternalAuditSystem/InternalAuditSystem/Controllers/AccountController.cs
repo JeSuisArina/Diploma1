@@ -3,12 +3,14 @@ using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using InternalAuditSystem.Models;
+using InternalAuditSystem.Models.EntityModels;
 
 namespace InternalAuditSystem.Controllers
 {
@@ -17,6 +19,7 @@ namespace InternalAuditSystem.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private AuditContext db = new AuditContext();
 
         public AccountController()
         {
@@ -147,12 +150,21 @@ namespace InternalAuditSystem.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, Users users)
         {
+            var tuple = new Tuple<RegisterViewModel, Users>(new RegisterViewModel(), new Users());
             if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            {              
+                
+                var user = new ApplicationUser { UserName = tuple.Item2.UserLastName + tuple.Item2.UserName + tuple.Item2.UserMiddleName, Email = tuple.Item1.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                users.UserEmail = tuple.Item1.Email;
+                users.UserLastName = tuple.Item2.UserLastName;
+                users.UserName = tuple.Item2.UserName;
+                users.UserMiddleName = tuple.Item2.UserMiddleName;
+                users.Role = 1;
+                users.SubdivisionId = tuple.Item2.SubdivisionId;
+                ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -169,7 +181,7 @@ namespace InternalAuditSystem.Controllers
             }
 
             // Появление этого сообщения означает наличие ошибки; повторное отображение формы
-            return View(model);
+            return View(tuple); 
         }
 
         //
