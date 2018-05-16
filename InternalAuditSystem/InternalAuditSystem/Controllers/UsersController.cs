@@ -37,7 +37,6 @@ namespace InternalAuditSystem.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
-            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
             return View();
         }
 
@@ -48,14 +47,13 @@ namespace InternalAuditSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,SubdivisionId,Role,UserLastName,UserName,UserMiddleName,UserEmail,UserPhone")] Users users)
         {
+            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", users.SubdivisionId);
             if (ModelState.IsValid)
             {
                 db.Users.Add(users);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-
-            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", users.SubdivisionId);
+            }            
             return View(users);
         }
 
@@ -82,13 +80,14 @@ namespace InternalAuditSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserId,SubdivisionId,Role,UserLastName,UserName,UserMiddleName,UserEmail,UserPhone")] Users users)
         {
+            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", users.SubdivisionId);
             if (ModelState.IsValid)
             {
                 db.Entry(users).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", users.SubdivisionId);
+            
             return View(users);
         }
 

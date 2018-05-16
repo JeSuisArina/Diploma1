@@ -59,6 +59,8 @@ namespace InternalAuditSystem.Controllers
                 }
                 // установка массива байтов
                 applications.ApplicationFile = fileData;
+                applications.ApplicationDateTime = DateTime.Now;
+                applications.UserId = 1;
                 db.Applications.Add(applications);
                 db.SaveChanges();
                 return RedirectToAction("Index");

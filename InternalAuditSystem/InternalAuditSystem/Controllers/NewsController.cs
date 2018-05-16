@@ -92,27 +92,27 @@ namespace InternalAuditSystem.Controllers
         }
 
         // GET: News/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NewsView newsView = db.NewsView.Find(id);
-            if (newsView == null)
+            News news = db.News.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(newsView);
+            return View(news);
         }
 
         // POST: News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            NewsView newsView = db.NewsView.Find(id);
-            db.NewsView.Remove(newsView);
+            News news = db.News.Find(id);
+            db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

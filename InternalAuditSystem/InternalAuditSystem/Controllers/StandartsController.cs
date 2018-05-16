@@ -99,7 +99,7 @@ namespace InternalAuditSystem.Controllers
         }
 
         // GET: Standarts/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -116,7 +116,7 @@ namespace InternalAuditSystem.Controllers
         // POST: Standarts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             Standarts standarts = db.Standarts.Find(id);
             db.Standarts.Remove(standarts);
