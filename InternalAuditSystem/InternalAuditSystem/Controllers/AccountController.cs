@@ -163,8 +163,10 @@ namespace InternalAuditSystem.Controllers
                 users.UserName = tuple.Item2.UserName;
                 users.UserMiddleName = tuple.Item2.UserMiddleName;
                 users.Role = 1;
-                users.SubdivisionId = tuple.Item2.SubdivisionId;
-                ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
+                users.SubdivisionId = tuple.Item2.SubdivisionId.Value;
+                db.Users.Add(users);
+                db.SaveChanges();
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -175,7 +177,7 @@ namespace InternalAuditSystem.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "News");
                 }
                 AddErrors(result);
             }

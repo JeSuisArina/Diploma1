@@ -20,7 +20,7 @@ namespace InternalAuditSystem.Models.EntityModels
         public string StandartId { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(100)]
         public string StandartName { get; set; }
 
         [Required]

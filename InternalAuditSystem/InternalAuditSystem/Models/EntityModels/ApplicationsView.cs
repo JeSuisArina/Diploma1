@@ -24,7 +24,7 @@ namespace InternalAuditSystem.Models.EntityModels
 
         [Key]
         [Column(Order = 2)]
-        [StringLength(30)]
+        [StringLength(100)]
         public string StandartName { get; set; }
 
         [Key]

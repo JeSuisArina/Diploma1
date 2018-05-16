@@ -34,7 +34,7 @@ namespace InternalAuditSystem.Models.EntityModels
 
         [Key]
         [Column(Order = 4)]
-        [StringLength(50)]
+        [StringLength(150)]
         public string SubdivisionName { get; set; }
 
         [Key]
