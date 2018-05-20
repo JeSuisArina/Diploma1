@@ -137,3 +137,5 @@ C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditS
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csproj.CopyComplete
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.dll
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.pdb
+C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.Migrations.DataMigration.resources
+C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csproj.GenerateResource.cache

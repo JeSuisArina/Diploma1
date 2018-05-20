@@ -20,6 +20,8 @@
     <link href="../../Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../../Scripts/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../../Scripts/lib/highlightjs/github.css" rel="stylesheet">
+    <link href="../../Scripts/lib/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="../../Scripts/lib/select2/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../Content/katniss.css">
 </head>
 
@@ -39,26 +41,46 @@
                 <p class="mg-b-20 mg-sm-b-30">Список доступных стандартов и гостов.</p>
                 <a href="../Standarts/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
                 <div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
-                    @foreach (var item in Model)
-                    {
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingThree">
-                                <h6 class="mg-b-0">
-                                    <a class="collapsed transition" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        @Html.DisplayFor(modelItem => item.StandartId), @Html.DisplayFor(modelItem => item.StandartName)
-                                    </a>
-                                </h6>
-                            </div><!-- card-header -->
-                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="card-body">
-                                    @Html.DisplayFor(modelItem => item.StandartDescription) \n
-                                    Загрузить файл: @Html.DisplayFor(modelItem => item.StandartFile)
-                                    @Html.ActionLink("Изменить", "Edit", new { id = item.StandartId })
-                                    @Html.ActionLink("Удалить", "Delete", new { id = item.StandartId })
-                                </div>
-                            </div>
+                    <div class="table-wrapper">
+                        <div class="dataTables_length" id="datatable1_length">
+
+                            <table id="datatable1" class="table display responsive nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="wd-10p">Название</th>
+                                        <th class="wd-15p">Описание</th>
+                                        <th class="wd-15p">File</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>                                           
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StandartName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StandartDescription)
+                                            </td>
+                                            <td>
+                                                <a href="./GetFile/@item.StandartId">Загрузить</a>
+                                            </td>
+
+                                            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                                            <td>
+                                                @Html.ActionLink("Заявки", "Details", new { id = item.StandartId })
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Удалить", "Delete", new { id = item.StandartId })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,7 +96,21 @@
     <script src="../../Scripts/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="../../Scripts/lib/moment/moment.js"></script>
     <script src="../../Scripts/lib/highlightjs/highlight.pack.js"></script>
-    <script src="../../Scripts/js/katniss.js"></script> 
-    
+    <script src="../../Scripts/lib/datatables/jquery.dataTables.js"></script>
+    <script src="../../Scripts/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../../Scripts/lib/select2/js/select2.min.js"></script>
+    <script src="../../Scripts/js/katniss.js"></script>
+
+    <script>
+        $('#datatable1').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Фильтр...',
+                sSearch: '',
+                lengthMenu: '_MENU_ строк/страница',
+            }
+        });
+    </script>
+
 </body>
 </html>

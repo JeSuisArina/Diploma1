@@ -20,6 +20,11 @@ namespace InternalAuditSystem.Controllers
             var sertificates = db.Sertificates.Include(s => s.Standarts).Include(s => s.Subdivisions);
             return View(sertificates.ToList());
         }
+        public ActionResult Reports()
+        {
+            var sertificates = db.Sertificates.Include(s => s.Standarts).Include(s => s.Subdivisions);
+            return View(sertificates.ToList());
+        }
 
         // GET: Sertificates/Details/5
         public ActionResult Details(int? id)

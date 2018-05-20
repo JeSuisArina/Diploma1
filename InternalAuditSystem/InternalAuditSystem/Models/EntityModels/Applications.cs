@@ -19,7 +19,7 @@ namespace InternalAuditSystem.Models.EntityModels
 
         public int UserId { get; set; }
 
-        public string StandartId { get; set; }
+        public int StandartId { get; set; }
 
         public DateTime ApplicationDateTime { get; set; }
 

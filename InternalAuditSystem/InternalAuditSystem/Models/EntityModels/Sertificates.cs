@@ -13,7 +13,7 @@ namespace InternalAuditSystem.Models.EntityModels
 
         public int SubdivisionId { get; set; }
 
-        public string StandartId { get; set; }
+        public int StandartId { get; set; }
 
         public DateTime SertificateDate { get; set; }
 

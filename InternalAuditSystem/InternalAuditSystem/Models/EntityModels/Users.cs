@@ -19,6 +19,7 @@ namespace InternalAuditSystem.Models.EntityModels
         [Key]
         public int UserId { get; set; }
 
+        [Required]
         public int? SubdivisionId { get; set; }
 
         public int Role { get; set; }

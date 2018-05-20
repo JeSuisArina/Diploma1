@@ -96,15 +96,8 @@
                             </div><!-- col-4 -->
                             <div class="col-lg-8">
                                 <div class="form-group mg-b-10-force">
-                                    <label class="form-control-label">Подразделение: <span class="tx-danger">*</span></label>
-                                    <select class="form-control select2" id="SubdivisionId">
-                                        <option label="Выберите подразделение"></option>
-                                        @foreach (var item in ViewBag.SubdivisionId)
-                                        {
-                                            <option value="@item.Value">@Html.Encode(item.Text)</option>
-                                        }
-                                    </select>
-
+                                    <label class="form-control-label">Подразделение: <span class="tx-danger">*</span></label>                                    
+                                    @Html.DropDownListFor(model => model.SubdivisionId, ViewBag.SubdivisionList as SelectList, new { @class = "form-control select 2" })
                                 </div>
                             </div><!-- col-8 -->
                         </div><!-- row -->

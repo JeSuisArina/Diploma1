@@ -22,23 +22,24 @@ namespace InternalAuditSystem.Controllers
         }
 
         // GET: Applications/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationsView applicationsView = db.ApplicationsView.Find(id);
-            if (applicationsView == null)
+            Applications applications = db.Applications.Find(id);
+            if (applications == null)
             {
                 return HttpNotFound();
             }
-            return View(applicationsView);
+            return View(applications);
         }
 
         // GET: Applications/Create
         public ActionResult Create()
         {
+            
             return View();
         }
 
@@ -49,7 +50,7 @@ namespace InternalAuditSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StandartId,ApplicationDateTime,ApplicationFile,ApplicationId,UserId,ApplicationContent")] Applications applications, HttpPostedFileBase uploadFile)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && uploadFile != null && uploadFile.ContentLength > 0)
             {
                 byte[] fileData = null;
                 // считываем переданный файл в массив байтов
@@ -59,8 +60,6 @@ namespace InternalAuditSystem.Controllers
                 }
                 // установка массива байтов
                 applications.ApplicationFile = fileData;
-                applications.ApplicationDateTime = DateTime.Now;
-                applications.UserId = 1;
                 db.Applications.Add(applications);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -124,6 +123,17 @@ namespace InternalAuditSystem.Controllers
             db.ApplicationsView.Remove(applicationsView);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public FileResult GetFile(int? id)
+        {
+            Applications applications = db.Applications.Find(id);
+            // Путь к файлу            
+            // Тип файла - content-type
+            string file_type = "file/pdf";
+            // Имя файла - необязательно
+            string file_name = "file.pdf";
+            return File(applications.ApplicationFile, file_type, file_name);
         }
 
         protected override void Dispose(bool disposing)

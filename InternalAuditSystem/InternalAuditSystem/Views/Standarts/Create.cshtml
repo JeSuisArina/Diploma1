@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Pagetitle = "Добавить стандарт";
 }
-@using (Html.BeginForm())
-{
+
     <!DOCTYPE html>
     <html>
     <head>
@@ -36,46 +35,44 @@
                 <h5>@ViewBag.Pagetitle</h5>
             </div> @*kt-pagetitle*@
             <div class="kt-pagebody">
+                @using (Html.BeginForm("Create",
+"Standarts",
+FormMethod.Post,
+new { enctype = "multipart/form-data" }))
+    {
+            @Html.AntiForgeryToken()
 
-                @Html.AntiForgeryToken()
+            <div class="control-label col-md-2">
+            </div>            
+            <div class="form-group">
+                <div class="col-md-10">
+                    Название стандарта
+                    @Html.EditorFor(model => model.StandartName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StandartName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    Описание
+                    @Html.EditorFor(model => model.StandartDescription, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StandartDescription, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    Файл
+                    <div class="editor-field">
+                        <input type="file" name="uploadFile" />
+                    </div>
+                </div>
+            </div>
 
-                <div class="control-label col-md-2">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Добавить" class="btn btn-default" />
                 </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        Идентификатор стандарта
-                        @Html.EditorFor(model => model.StandartId, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.StandartId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        Название стандарта
-                        @Html.EditorFor(model => model.StandartName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.StandartName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        Описание
-                        @Html.EditorFor(model => model.StandartDescription, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.StandartDescription, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        Файл                        
-                        <div class="editor-field">
-                            <input type="file" name="uploadFile" />
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Добавить" class="btn btn-default" />
-                    </div>
-                </div>
+            </div>
+}
             </div>
             <div class="kt-footer">
                 <span> &copy; TPU - 2018 </span>
@@ -92,4 +89,4 @@
         }
     </body>
 </html>
-}
+

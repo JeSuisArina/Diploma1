@@ -53,7 +53,7 @@
                                     <th class="wd-20p">Комментарий</th>
                                     <th class="wd-10p">Файл</th>
                                     <th></th>
-                                    <th></th>
+                                    @*<th></th>*@
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,9 +77,9 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.ApplicationFile)
                                         </td>                        
-                                        <td>
-                                            @Html.ActionLink("Заявки", "Details", new { id=item.ApplicationId })
-                                        </td>
+                                        @*<td>
+                                            @Html.ActionLink("Заявки", "Details", new { id=item.UserId })
+                                        </td>*@
                                         <td>
                                             @Html.ActionLink("Удалить", "Delete", new { id=item.ApplicationId })
                                         </td>

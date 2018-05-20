@@ -16,8 +16,7 @@ namespace InternalAuditSystem.Models.EntityModels
         }
 
         [Key]
-        [StringLength(10)]
-        public string StandartId { get; set; }
+        public int StandartId { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -27,7 +26,7 @@ namespace InternalAuditSystem.Models.EntityModels
         [StringLength(100)]
         public string StandartDescription { get; set; }
 
-        [Required]
+        
         public byte[] StandartFile { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

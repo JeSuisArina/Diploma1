@@ -70,6 +70,22 @@ namespace InternalAuditSystem.Models
         public string Email { get; set; }
 
         [Required]
+        public int? SubdivisionId { get; set; }
+
+        [Required]
+        public int Role { get; set; }
+
+        [Required]
+        public string UserLastName { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
+
+        public string UserMiddleName { get; set; }
+        [Required]
+        public string UserPhone { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "Значение {0} должно содержать не менее {2} символов.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using InternalAuditSystem.Models;
 using InternalAuditSystem.Models.EntityModels;
+using System.Collections.Generic;
 
 namespace InternalAuditSystem.Controllers
 {
@@ -141,7 +142,8 @@ namespace InternalAuditSystem.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {
+        {          
+            ViewBag.SubdivisionList = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
             return View();
         }
 
@@ -150,20 +152,26 @@ namespace InternalAuditSystem.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model, Users users)
+        public async Task<ActionResult> Register( RegisterViewModel model)
         {
-            var tuple = new Tuple<RegisterViewModel, Users>(new RegisterViewModel(), new Users());
             if (ModelState.IsValid)
-            {              
-                
-                var user = new ApplicationUser { UserName = tuple.Item2.UserLastName + tuple.Item2.UserName + tuple.Item2.UserMiddleName, Email = tuple.Item1.Email };
+            {  
+                var user = new ApplicationUser { UserLastName = model.UserLastName,
+                                                 UserName = model.UserName,
+                                                 UserMiddleName = model.UserMiddleName,
+                                                 Email = model.Email,
+                                                 UserPhone = model.UserPhone,
+                                                 SubdivisionId = model.SubdivisionId,
+                                                 Role = 1 };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                users.UserEmail = tuple.Item1.Email;
-                users.UserLastName = tuple.Item2.UserLastName;
-                users.UserName = tuple.Item2.UserName;
-                users.UserMiddleName = tuple.Item2.UserMiddleName;
+                Users users = new Users();
+                users.UserEmail = model.Email;
+                users.UserLastName = model.UserLastName;
+                users.UserName = model.UserName;
+                users.UserPhone = model.UserPhone;
+                users.UserMiddleName = model.UserMiddleName;
                 users.Role = 1;
-                users.SubdivisionId = tuple.Item2.SubdivisionId.Value;
+                users.SubdivisionId = model.SubdivisionId;
                 db.Users.Add(users);
                 db.SaveChanges();
 
@@ -181,9 +189,9 @@ namespace InternalAuditSystem.Controllers
                 }
                 AddErrors(result);
             }
-
+            ViewBag.SubdivisionList = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
             // Появление этого сообщения означает наличие ошибки; повторное отображение формы
-            return View(tuple); 
+            return View();
         }
 
         //
