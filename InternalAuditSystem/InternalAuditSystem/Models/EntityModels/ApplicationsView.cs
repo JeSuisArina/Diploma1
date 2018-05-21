@@ -36,10 +36,6 @@ namespace InternalAuditSystem.Models.EntityModels
 
         [Key]
         [Column(Order = 4)]
-        public byte[] ApplicationFile { get; set; }
-
-        [Key]
-        [Column(Order = 5)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ApplicationId { get; set; }
     }

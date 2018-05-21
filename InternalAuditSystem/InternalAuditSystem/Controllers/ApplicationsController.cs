@@ -39,7 +39,7 @@ namespace InternalAuditSystem.Controllers
         // GET: Applications/Create
         public ActionResult Create()
         {
-            
+            ViewBag.StandartsList = new SelectList(db.Standarts, "StandartId", "StandartName");
             return View();
         }
 
@@ -48,18 +48,10 @@ namespace InternalAuditSystem.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StandartId,ApplicationDateTime,ApplicationFile,ApplicationId,UserId,ApplicationContent")] Applications applications, HttpPostedFileBase uploadFile)
+        public ActionResult Create([Bind(Include = "StandartId,ApplicationDateTime,ApplicationId,UserId,ApplicationContent")] Applications applications)
         {
-            if (ModelState.IsValid && uploadFile != null && uploadFile.ContentLength > 0)
+            if (ModelState.IsValid)
             {
-                byte[] fileData = null;
-                // считываем переданный файл в массив байтов
-                using (var binaryReader = new BinaryReader(uploadFile.InputStream))
-                {
-                    fileData = binaryReader.ReadBytes(uploadFile.ContentLength);
-                }
-                // установка массива байтов
-                applications.ApplicationFile = fileData;
                 db.Applications.Add(applications);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -125,16 +117,6 @@ namespace InternalAuditSystem.Controllers
             return RedirectToAction("Index");
         }
 
-        public FileResult GetFile(int? id)
-        {
-            Applications applications = db.Applications.Find(id);
-            // Путь к файлу            
-            // Тип файла - content-type
-            string file_type = "file/pdf";
-            // Имя файла - необязательно
-            string file_name = "file.pdf";
-            return File(applications.ApplicationFile, file_type, file_name);
-        }
 
         protected override void Dispose(bool disposing)
         {

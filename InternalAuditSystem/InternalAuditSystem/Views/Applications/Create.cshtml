@@ -41,32 +41,67 @@
             </div> @*kt-pagetitle*@
             <div class="kt-pagebody">
                 @Html.AntiForgeryToken()
-            <div class="card pd-20 pd-sm-40 mg-t-50">
-                <h6 class="card-body-title">Добавление заявки</h6>
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <div class="col-md-10">
-                        Комментарий
-                        @Html.EditorFor(model => model.ApplicationContent, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ApplicationContent, "", new { @class = "text-danger" })
+                <div class="card pd-20 pd-sm-40 mg-t-50">
+                    <h6 class="card-body-title">Добавление заявки</h6>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="col-md-8 col-lg-9 mg-t-30 mg-md-t-0">
+                        <label class="content-left-label">Информация о заявителе</label>
+                        <div class="card bg-gray-200 bd-0">
+                            <div class="edit-profile-form">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Фамилия: </label>
+                                    <div class="col-sm-8 col-xl-6 mg-t-10 mg-sm-t-0">
+                                        User.Identity.GetUserLastName()
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Имя: </label>
+                                    <div class="col-sm-8 col-xl-6 mg-t-10 mg-sm-t-0">
+                                        User.Identity.GetUserName()
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Отчество: </label>
+                                    <div class="col-sm-8 col-xl-6 mg-t-10 mg-sm-t-0">
+                                        User.Identity.GetUserMiddleName()
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 form-control-label">Email: </label>
+                                    <div class="col-sm-8 col-xl-6 mg-t-10 mg-sm-t-0">
+                                        User.Identity.GetEmail()
+                                    </div>
+                                </div>
+                                <div class="form-group row mg-b-0">
+                                    <label class="col-sm-3 form-control-label">Подразделение: </label>
+                                    <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <label class="form-control-label">Стандарт: <span class="tx-danger">*</span></label>
+                                        @Html.DropDownListFor(model => model.StandartId, ViewBag.StandartsList as SelectList, new { @class = "form-control select 2" })
+                                    </div>
+                                </div>
+                            </div><!-- wd-60p -->
+                        </div><!-- card -->                        
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                Комментарий
+                                @Html.EditorFor(model => model.ApplicationContent, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ApplicationContent, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        Файл
-                        <div class="editor-field">
-                            <input type="file" name="uploadFile" />
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Добавить" class="btn btn-default" />
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Добавить" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
         <div class="kt-footer">
             <span> &copy; TPU - 2018 </span>
         </div><!-- kt-footer -->
