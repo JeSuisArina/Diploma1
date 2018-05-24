@@ -38,6 +38,7 @@ namespace InternalAuditSystem.Migrations
                         SubdivisionId = c.Int(),
                         Role = c.Int(nullable: false),
                         UserLastName = c.String(),
+                        UserFirstName = c.String(),
                         UserMiddleName = c.String(),
                         UserPhone = c.String(),
                         Email = c.String(maxLength: 256),

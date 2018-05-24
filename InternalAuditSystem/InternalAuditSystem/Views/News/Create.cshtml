@@ -38,9 +38,14 @@
             <div class="kt-pagetitle">
                 <h5>@ViewBag.Pagetitle</h5>
             </div> @*kt-pagetitle*@
-            <div class="kt-pagebody">@Html.AntiForgeryToken()
+            <div class="kt-pagebody">
+                @Html.AntiForgeryToken()
                 <div class="card pd-20 pd-sm-40 mg-t-50">
-                    <h6 class="card-body-title">Добавление новости</h6>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <h6 class="card-body-title">Новость</h6>
+                        </div>
+                    </div>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         <div class="col-md-10">
@@ -51,23 +56,21 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-10">
-                            <div class="editable tx-16 bd pd-30 tx-inverse">jhgjhgjh</div>
-                                @Html.EditorFor(model => model.NewsContent, new { htmlAttributes = new { @class = "editable tx-16 bd pd-30 tx-inverse" } })
-                                @Html.ValidationMessageFor(model => model.NewsContent, "", new { @class = "text-danger" })
-                            </div>
+                            @Html.EditorFor(model => model.NewsContent, new { htmlAttributes = new { @class = "form-control pd-60" } })
+                            @Html.ValidationMessageFor(model => model.NewsContent, "", new { @class = "text-danger" })
                         </div>
-
-                </div><!-- card -->
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Добавить" class="btn btn-default" />
                     </div>
-                </div>
-            </div>
-            <div class="kt-footer">
-                <span> &copy; TPU - 2018 </span>
-            </div><!-- kt-footer -->
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Добавить" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div><!-- card -->
+        </div>
+        
+        <div class="kt-footer">
+            <span> &copy; TPU - 2018 </span>
+        </div><!-- kt-footer -->
         </div>
 
 

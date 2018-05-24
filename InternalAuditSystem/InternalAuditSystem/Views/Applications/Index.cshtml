@@ -51,7 +51,6 @@
                                     <th class="wd-30p">ФИО заявителя</th>
                                     <th class="wd-15p">Стандарт</th>
                                     <th class="wd-20p">Комментарий</th>
-                                    <th class="wd-10p">Файл</th>
                                     <th></th>
                                     @*<th></th>*@
                                 </tr>
@@ -73,10 +72,7 @@
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.ApplicationContent)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ApplicationFile)
-                                        </td>                        
+                                        </td>                                                             
                                         @*<td>
                                             @Html.ActionLink("Заявки", "Details", new { id=item.UserId })
                                         </td>*@

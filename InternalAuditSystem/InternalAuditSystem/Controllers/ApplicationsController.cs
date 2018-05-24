@@ -5,9 +5,12 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using InternalAuditSystem.Models.EntityModels;
+using Microsoft.AspNet.Identity;
 
 namespace InternalAuditSystem.Controllers
 {
@@ -39,6 +42,16 @@ namespace InternalAuditSystem.Controllers
         // GET: Applications/Create
         public ActionResult Create()
         {
+            string userEmail = User.Identity.GetUserName();
+            Users user = db.Users.Where(u => u.UserEmail == userEmail).FirstOrDefault();
+            ViewBag.UserLastName = user.UserLastName;
+            ViewBag.UserName = user.UserName;
+            ViewBag.UserMiddleName = user.UserMiddleName;
+            ViewBag.UserEmail = user.UserEmail;
+            ViewBag.UserPhone = user.UserPhone;
+            var userSubdivision = db.Subdivisions.Where(s => s.SubdivisionId == user.SubdivisionId).FirstOrDefault();
+            ViewBag.UserSubdivision = userSubdivision.SubdivisionName;
+
             ViewBag.StandartsList = new SelectList(db.Standarts, "StandartId", "StandartName");
             return View();
         }
@@ -52,6 +65,10 @@ namespace InternalAuditSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                string userEmail = User.Identity.GetUserName();
+                Users user = db.Users.Where(u => u.UserEmail == userEmail).FirstOrDefault();
+                applications.UserId = user.UserId;
+                applications.ApplicationDateTime = DateTime.Now;
                 db.Applications.Add(applications);
                 db.SaveChanges();
                 return RedirectToAction("Index");

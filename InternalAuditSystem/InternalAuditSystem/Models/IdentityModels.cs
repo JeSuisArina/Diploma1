@@ -15,6 +15,8 @@ namespace InternalAuditSystem.Models
 
         public string UserLastName { get; set; }
 
+        public string UserFirstName { get; set; }
+
         public string UserMiddleName { get; set; }
 
         public string UserPhone { get; set; }

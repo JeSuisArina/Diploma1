@@ -79,8 +79,8 @@ namespace InternalAuditSystem.Controllers
 
             // Сбои при входе не приводят к блокированию учетной записи
             // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
-            ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
-            var result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            //ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,31 +155,33 @@ namespace InternalAuditSystem.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register( RegisterViewModel model)
         {
+            
             if (ModelState.IsValid)
             {  
-                var user = new ApplicationUser { UserLastName = model.UserLastName,
-                                                 UserName = model.UserName,
-                                                 UserMiddleName = model.UserMiddleName,
-                                                 Email = model.Email,
-                                                 UserPhone = model.UserPhone,
-                                                 SubdivisionId = model.SubdivisionId,
-                                                 Role = 1 };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                Users users = new Users();
-                users.UserEmail = model.Email;
-                users.UserLastName = model.UserLastName;
-                users.UserName = model.UserName;
-                users.UserPhone = model.UserPhone;
-                users.UserMiddleName = model.UserMiddleName;
-                users.Role = 1;
-                users.SubdivisionId = model.SubdivisionId;
-                db.Users.Add(users);
-                db.SaveChanges();
+                var user = new ApplicationUser {
+                Email = model.UserName,
+                UserLastName = model.UserLastName,
+                UserFirstName = model.UserFirstName,
+                UserMiddleName = model.UserMiddleName,                                                 
+                UserName = model.UserName,
+                UserPhone = model.UserPhone,
+                SubdivisionId = model.SubdivisionId,
+                Role = 1 };
+                var result = await UserManager.CreateAsync(user, model.Password);               
 
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
+                    Users users = new Users();
+                    users.UserEmail = model.Email;
+                    users.UserLastName = model.UserLastName;
+                    users.UserName = model.UserFirstName;
+                    users.UserPhone = model.UserPhone;
+                    users.UserMiddleName = model.UserMiddleName;
+                    users.Role = 2;
+                    users.SubdivisionId = model.SubdivisionId;
+                    db.Users.Add(users);
+                    db.SaveChanges();
                     // Дополнительные сведения о включении подтверждения учетной записи и сброса пароля см. на странице https://go.microsoft.com/fwlink/?LinkID=320771.
                     // Отправка сообщения электронной почты с этой ссылкой
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

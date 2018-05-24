@@ -35,6 +35,10 @@
                 <div class="signbox-body">
                     <div class="form-group">
                         <label class="form-control-label">Email:</label>
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                    </div><!-- form-group -->
+                    <div class="form-group">
+                        <label class="form-control-label">Повторите Email:</label>
                         @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
                     </div><!-- form-group -->
                     <div class="form-group">
@@ -45,7 +49,7 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <label class="form-control-label">Имя:</label>
-                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                                @Html.TextBoxFor(model => model.UserFirstName, new { @class = "form-control" })
                             </div><!-- form-group -->
                         </div><!-- col -->
                         <div class="col-sm">

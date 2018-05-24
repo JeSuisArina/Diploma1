@@ -13,7 +13,7 @@ namespace InternalAuditSystem.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201805192311065_DataMigration"; }
+            get { return "201805231850299_DataMigration"; }
         }
         
         string IMigrationMetadata.Source

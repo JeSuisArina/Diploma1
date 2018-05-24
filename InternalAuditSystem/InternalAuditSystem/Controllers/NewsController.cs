@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using InternalAuditSystem.Models.EntityModels;
+using Microsoft.AspNet.Identity;
 
 namespace InternalAuditSystem.Controllers
 {
@@ -50,7 +51,9 @@ namespace InternalAuditSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                news.UserId = 1;
+                string userEmail = User.Identity.GetUserName();
+                Users user = db.Users.Where(u => u.UserEmail == userEmail).FirstOrDefault();
+                news.UserId = user.UserId;
                 news.NewsDateTime = DateTime.Now;
                 db.News.Add(news);
                 db.SaveChanges();

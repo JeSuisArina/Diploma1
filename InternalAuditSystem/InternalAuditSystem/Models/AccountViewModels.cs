@@ -51,7 +51,7 @@ namespace InternalAuditSystem.Models
         [Required]
         [Display(Name = "Адрес электронной почты")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -77,6 +77,9 @@ namespace InternalAuditSystem.Models
 
         [Required]
         public string UserLastName { get; set; }
+
+        [Required]
+        public string UserFirstName { get; set; }
 
         [Required]
         public string UserName { get; set; }
