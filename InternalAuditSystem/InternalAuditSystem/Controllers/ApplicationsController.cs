@@ -21,11 +21,16 @@ namespace InternalAuditSystem.Controllers
         // GET: Applications
         public ActionResult Index()
         {
+            string userEmail = User.Identity.GetUserName();
+            //Users user = db.Users.Where(u => u.UserEmail == userEmail).FirstOrDefault();            
+            //Applications applications = db.Applications.Where(u => u.UserId == user.UserId).FirstOrDefault();
+            //var applicationsView = db.ApplicationsView.Where(a => a.ApplicationId == applications.ApplicationId).FirstOrDefault();
+            //ViewBag.Application = applicationsView;
             return View(db.ApplicationsView.ToList());
         }
 
         // GET: Applications/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -78,18 +83,19 @@ namespace InternalAuditSystem.Controllers
         }
 
         // GET: Applications/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationsView applicationsView = db.ApplicationsView.Find(id);
-            if (applicationsView == null)
+            ViewBag.StatusList = new SelectList(db.ApplicationStatuses, "ApplicationStatusId", "ApplicationStatus");
+            Applications applications = db.Applications.Find(id);
+            if (applications == null)
             {
                 return HttpNotFound();
             }
-            return View(applicationsView);
+            return View(applications);
         }
 
         // POST: Applications/Edit/5
@@ -97,15 +103,15 @@ namespace InternalAuditSystem.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserLastName,UserName,StandartName,ApplicationDateTime,ApplicationFile,ApplicationId,UserMiddleName,ApplicationContent")] ApplicationsView applicationsView)
+        public ActionResult Edit(Applications applications)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicationsView).State = EntityState.Modified;
+                db.Entry(applications).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(applicationsView);
+            return View(applications);
         }
 
         // GET: Applications/Delete/5

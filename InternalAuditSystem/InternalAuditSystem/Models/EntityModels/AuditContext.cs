@@ -14,7 +14,9 @@ namespace InternalAuditSystem.Models.EntityModels
 
         public virtual DbSet<Adjustments> Adjustments { get; set; }
         public virtual DbSet<Applications> Applications { get; set; }
+        public virtual DbSet<ApplicationStatuses> ApplicationStatuses { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Sertificates> Sertificates { get; set; }
         public virtual DbSet<Standarts> Standarts { get; set; }
         public virtual DbSet<Subdivisions> Subdivisions { get; set; }
@@ -32,17 +34,30 @@ namespace InternalAuditSystem.Models.EntityModels
                 .WithRequired(e => e.Applications)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<ApplicationStatuses>()
+                .Property(e => e.ApplicationStatus)
+                .IsFixedLength();
+
+            modelBuilder.Entity<ApplicationStatuses>()
+                .HasMany(e => e.Applications)
+                .WithRequired(e => e.ApplicationStatuses)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Roles>()
+                .Property(e => e.Role)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Roles>()
+                .HasMany(e => e.Users)
+                .WithRequired(e => e.Roles)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<Standarts>()
                 .Property(e => e.StandartName)
                 .IsFixedLength();
 
             modelBuilder.Entity<Standarts>()
                 .HasMany(e => e.Applications)
-                .WithRequired(e => e.Standarts)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Standarts>()
-                .HasMany(e => e.Sertificates)
                 .WithRequired(e => e.Standarts)
                 .WillCascadeOnDelete(false);
 
@@ -82,12 +97,16 @@ namespace InternalAuditSystem.Models.EntityModels
                 .Property(e => e.StandartName)
                 .IsFixedLength();
 
-            modelBuilder.Entity<SertificatesView>()
+            modelBuilder.Entity<ApplicationsView>()
                 .Property(e => e.SubdivisionName)
                 .IsFixedLength();
 
+            modelBuilder.Entity<ApplicationsView>()
+                .Property(e => e.ApplicationStatus)
+                .IsFixedLength();
+
             modelBuilder.Entity<SertificatesView>()
-                .Property(e => e.StandartName)
+                .Property(e => e.SubdivisionName)
                 .IsFixedLength();
 
             modelBuilder.Entity<UsersView>()
@@ -96,6 +115,10 @@ namespace InternalAuditSystem.Models.EntityModels
 
             modelBuilder.Entity<UsersView>()
                 .Property(e => e.SubdivisionName)
+                .IsFixedLength();
+
+            modelBuilder.Entity<UsersView>()
+                .Property(e => e.Role)
                 .IsFixedLength();
         }
     }

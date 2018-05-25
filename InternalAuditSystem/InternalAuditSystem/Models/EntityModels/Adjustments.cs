@@ -22,7 +22,13 @@ namespace InternalAuditSystem.Models.EntityModels
         public string AdjustmentContent { get; set; }
 
         [Required]
-        public byte[] AdjustmentFile { get; set; }
+        public byte[] AuditPlanFile { get; set; }
+
+        [Required]
+        public byte[] ReportFile { get; set; }
+
+        [Required]
+        public byte[] OrderFile { get; set; }
 
         public virtual Users Users { get; set; }
 

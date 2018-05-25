@@ -209,13 +209,16 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppDbInitializer.cs" />
     <Compile Include="Models\EntityModels\Adjustments.cs" />
     <Compile Include="Models\EntityModels\AdjustmentView.cs" />
     <Compile Include="Models\EntityModels\Applications.cs" />
+    <Compile Include="Models\EntityModels\ApplicationStatuses.cs" />
     <Compile Include="Models\EntityModels\ApplicationsView.cs" />
     <Compile Include="Models\EntityModels\AuditContext.cs" />
     <Compile Include="Models\EntityModels\News.cs" />
     <Compile Include="Models\EntityModels\NewsView.cs" />
+    <Compile Include="Models\EntityModels\Roles.cs" />
     <Compile Include="Models\EntityModels\Sertificates.cs" />
     <Compile Include="Models\EntityModels\SertificatesView.cs" />
     <Compile Include="Models\EntityModels\Standarts.cs" />

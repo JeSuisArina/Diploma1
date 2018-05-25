@@ -12,7 +12,6 @@ namespace InternalAuditSystem.Models.EntityModels
         public Standarts()
         {
             Applications = new HashSet<Applications>();
-            Sertificates = new HashSet<Sertificates>();
         }
 
         [Key]
@@ -26,13 +25,10 @@ namespace InternalAuditSystem.Models.EntityModels
         [StringLength(100)]
         public string StandartDescription { get; set; }
 
-        
+        [Required]
         public byte[] StandartFile { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Applications> Applications { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sertificates> Sertificates { get; set; }
     }
 }

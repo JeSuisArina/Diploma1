@@ -40,8 +40,13 @@
         <div class="kt-pagebody">
             <div class="card pd-20 pd-sm-40">
                 <p class="mg-b-20 mg-sm-b-30">Список зарегистрированных пользователей.</p>
-                <a href="../Users/Create" style="font-size: 36px"><i class="icon ion-ios-personadd-outline"></i></a>
-                
+                @if (User.IsInRole("admin"))
+                {
+                    <p>
+                        <a href="../Users/Create" style="font-size: 36px"><i class="icon ion-ios-personadd-outline"></i></a>
+                    </p>
+                }                
+
                 <div class="table-wrapper">
                     <div class="dataTables_length" id="datatable1_length">
 
@@ -61,39 +66,39 @@
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UserLastName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UserName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UserMiddleName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.SubdivisionName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Role)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UserEmail)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UserPhone)
-                                        </td>
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserLastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserMiddleName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubdivisionName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserPhone)
+                            </td>
 
-                                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-                                        <td>
-                                            @Html.ActionLink("Заявки", "Details", new { id=item.UserId })
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Удалить", "Delete", new { id=item.UserId})
-                                        </td>
-                                    </tr>
-                                }
+                            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                            <td>
+                                @Html.ActionLink("Заявки", "Details", new { id = item.UserId })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Удалить", "Delete", new { id = item.UserId })
+                            </td>
+                        </tr>
+        }
                             </tbody>
                         </table>
                     </div>

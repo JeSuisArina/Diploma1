@@ -1,5 +1,3 @@
-C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csprojResolveAssemblyReference.cache
-C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csproj.CoreCompileInputs.cache
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\bin\ApplicationInsights.config
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\bin\InternalAuditSystem.dll.config
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\bin\InternalAuditSystem.dll
@@ -134,8 +132,10 @@ C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditS
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\bin\ru\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csprojResolveAssemblyReference.cache
+C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.Migrations.DataMigration.resources
+C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csproj.GenerateResource.cache
+C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csproj.CoreCompileInputs.cache
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csproj.CopyComplete
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.dll
 C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.pdb
-C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.Migrations.DataMigration.resources
-C:\Users\Арина\Documents\GitHub\Diploma1\InternalAuditSystem\InternalAuditSystem\obj\Debug\InternalAuditSystem.csproj.GenerateResource.cache

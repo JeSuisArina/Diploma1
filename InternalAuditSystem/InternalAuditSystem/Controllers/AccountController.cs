@@ -143,7 +143,7 @@ namespace InternalAuditSystem.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {          
+        {
             ViewBag.SubdivisionList = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
             return View();
         }
@@ -166,11 +166,12 @@ namespace InternalAuditSystem.Controllers
                 UserName = model.UserName,
                 UserPhone = model.UserPhone,
                 SubdivisionId = model.SubdivisionId,
-                Role = 1 };
+                Role = 3 };
                 var result = await UserManager.CreateAsync(user, model.Password);               
 
                 if (result.Succeeded)
                 {
+                    await UserManager.AddToRoleAsync(user.Id, "admin");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     Users users = new Users();
                     users.UserEmail = model.Email;
@@ -178,8 +179,8 @@ namespace InternalAuditSystem.Controllers
                     users.UserName = model.UserFirstName;
                     users.UserPhone = model.UserPhone;
                     users.UserMiddleName = model.UserMiddleName;
-                    users.Role = 2;
                     users.SubdivisionId = model.SubdivisionId;
+                    users.RoleId = 3;
                     db.Users.Add(users);
                     db.SaveChanges();
                     // Дополнительные сведения о включении подтверждения учетной записи и сброса пароля см. на странице https://go.microsoft.com/fwlink/?LinkID=320771.

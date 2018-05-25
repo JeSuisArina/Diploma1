@@ -33,8 +33,8 @@
         <div class="kt-breadcrumb">
             <nav class="breadcrumb">
                 <a class="breadcrumb-item" href="../News/Index">Главная страница</a>
-                <a class="breadcrumb-item" href="Index">Подразделения</a>
-                <span class="breadcrumb-item active">Добавить подразделение</span>
+                <a class="breadcrumb-item" href="Index">Пользователи</a>
+                <span class="breadcrumb-item active">@ViewBag.Title</span>
             </nav>
         </div><!-- kt-breadcrumb -->
         <div class="kt-mainpanel">
@@ -86,12 +86,7 @@
                             <div class="col-lg-4">
                                 <div class="form-group mg-b-10-force">
                                     <label class="form-control-label">Роль: <span class="tx-danger">*</span></label>
-                                    <select class="form-control select2" id="Role">
-                                        <option label="Выберите роль"></option>
-                                        <option value="0">Пользователь</option>
-                                        <option value="1">Аудитор</option>
-                                        <option value="2">Администратор</option>
-                                    </select>
+                                    @Html.DropDownListFor(model => model.RoleId, ViewBag.RoleList as SelectList, new { @class = "form-control select 2" })
                                 </div>
                             </div><!-- col-4 -->
                             <div class="col-lg-8">

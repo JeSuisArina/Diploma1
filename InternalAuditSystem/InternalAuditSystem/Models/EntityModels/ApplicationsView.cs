@@ -38,5 +38,15 @@ namespace InternalAuditSystem.Models.EntityModels
         [Column(Order = 4)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ApplicationId { get; set; }
+
+        [Key]
+        [Column(Order = 5)]
+        [StringLength(150)]
+        public string SubdivisionName { get; set; }
+
+        [Key]
+        [Column(Order = 6)]
+        [StringLength(20)]
+        public string ApplicationStatus { get; set; }
     }
 }

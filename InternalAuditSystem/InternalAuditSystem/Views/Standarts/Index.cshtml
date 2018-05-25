@@ -39,7 +39,11 @@
         <div class="kt-pagebody">
             <div class="card pd-20 pd-sm-40">
                 <p class="mg-b-20 mg-sm-b-30">Список доступных стандартов и гостов.</p>
-                <a href="../Standarts/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
+                @if (User.IsInRole("admin") || User.IsInRole("auditor"))
+                {
+                    <a href="../Standarts/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
+                }
+            
                 <div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
                     <div class="table-wrapper">
                         <div class="dataTables_length" id="datatable1_length">
@@ -56,27 +60,27 @@
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
-                                    {
-                                        <tr>                                           
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.StandartName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.StandartDescription)
-                                            </td>
-                                            <td>
-                                                <a href="./GetFile/@item.StandartId">Загрузить</a>
-                                            </td>
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StandartName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StandartDescription)
+                                </td>
+                                <td>
+                                    <a href="./GetFile/@item.StandartId">Загрузить</a>
+                                </td>
 
-                                            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-                                            <td>
-                                                @Html.ActionLink("Заявки", "Details", new { id = item.StandartId })
-                                            </td>
-                                            <td>
-                                                @Html.ActionLink("Удалить", "Delete", new { id = item.StandartId })
-                                            </td>
-                                        </tr>
-                                    }
+                                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                                <td>
+                                    @Html.ActionLink("Заявки", "Details", new { id = item.StandartId })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Удалить", "Delete", new { id = item.StandartId })
+                                </td>
+                            </tr>
+            }
                                 </tbody>
                             </table>
                         </div>

@@ -1,51 +1,121 @@
-﻿@model IEnumerable<InternalAuditSystem.Models.EntityModels.Sertificates>
+﻿@model IEnumerable<InternalAuditSystem.Models.EntityModels.SertificatesView>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Аудиты";
+    ViewBag.Pagetitle = "График аудитов";
+    ViewBag.Pass = "Главная страница";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Standarts.StandartName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subdivisions.SubdivisionName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SertificateDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SertificateShelfLife)
-        </th>
-        <th></th>
-    </tr>
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Standarts.StandartName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subdivisions.SubdivisionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SertificateDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SertificateShelfLife)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SertificateId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SertificateId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SertificateId })
-        </td>
-    </tr>
-}
+    <title>@ViewBag.Title</title>
+    <!-- vendor css -->
+    <link href="../../Scripts/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="../../Scripts/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="../../Scripts/lib/highlightjs/github.css" rel="stylesheet">
+    <link href="../../Scripts/lib/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="../../Scripts/lib/select2/css/select2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/katniss.css">
+</head>
 
-</table>
+<body>
+    <div class="kt-breadcrumb">
+        <nav class="breadcrumb">
+            <a class="breadcrumb-item" href="../News/Index">Главная страница</a>
+            <span class="breadcrumb-item active">@ViewBag.Title</span>
+        </nav>
+    </div><!-- kt-breadcrumb -->
+    <div class="kt-mainpanel">
+        <div class="kt-pagetitle">
+            <h5>@ViewBag.Pagetitle</h5>
+        </div>
+        <div class="kt-pagebody">
+            <div class="card pd-20 pd-sm-40">
+                <p class="mg-b-20 mg-sm-b-30">График проведения аудитов.</p>
+                <a href="../Sertificates/Create" style="font-size: 36px"><i class="icon ion-ios-plus-outline"></i></a>
+
+                <div class="table-wrapper">
+                    <div class="dataTables_length" id="datatable1_length">
+
+                        <table id="datatable1" class="table display responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="wd-25p">Название подразделения</th>
+                                    <th class="wd-20p">Дата последнего аудита</th>
+                                    <th class="wd-25p">УК/ОСМК</th>
+                                    <th class="wd-7p">Наличие несоответствий</th>
+                                    <th class="wd-10p"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SubdivisionName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SertificateDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserLastName)
+                                            @Html.DisplayFor(modelItem => item.UserName)
+                                            @Html.DisplayFor(modelItem => item.UserMiddleName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Discrepancy)
+                                        </td>                                       
+
+                                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                                        @*<td>
+                                            @Html.ActionLink("Заявки", "Details", new { id = item.SertificateId })
+                                        </td>*@
+                                        <td>
+                                            @Html.ActionLink("Удалить", "Delete", new { id = item.SertificateId })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="kt-footer">
+            <span> &copy; TPU - 2018 </span>
+        </div><!-- kt-footer -->
+    </div>
+
+
+
+    <script src="../../Scripts/lib/jquery/jquery.js"></script>
+    <script src="../../Scripts/lib/popper.js/popper.js"></script>
+    <script src="../../Scripts/lib/bootstrap/bootstrap.js"></script>
+    <script src="../../Scripts/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
+    <script src="../../Scripts/lib/moment/moment.js"></script>
+    <script src="../../Scripts/lib/highlightjs/highlight.pack.js"></script>
+    <script src="../../Scripts/lib/datatables/jquery.dataTables.js"></script>
+    <script src="../../Scripts/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../../Scripts/lib/select2/js/select2.min.js"></script>
+    <script src="../../Scripts/js/katniss.js"></script>
+
+    <script>
+        $('#datatable1').DataTable({
+                    responsive: true,
+                    language: {
+                        searchPlaceholder: 'Фильтр...',
+                        sSearch: '',
+                        lengthMenu: '_MENU_ строк/страница',
+                    }
+            });
+    </script>
+</body>
+</html>

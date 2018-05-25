@@ -19,10 +19,9 @@ namespace InternalAuditSystem.Models.EntityModels
         [Key]
         public int UserId { get; set; }
 
-        [Required]
         public int? SubdivisionId { get; set; }
 
-        public int Role { get; set; }
+        public int RoleId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -51,6 +50,8 @@ namespace InternalAuditSystem.Models.EntityModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }
+
+        public virtual Roles Roles { get; set; }
 
         public virtual Subdivisions Subdivisions { get; set; }
     }

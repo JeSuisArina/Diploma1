@@ -30,7 +30,8 @@
 <body>
     <div class="kt-breadcrumb">
         <nav class="breadcrumb">
-            <span class="breadcrumb-item active">Главная страница</span>
+            <a class="breadcrumb-item" href="../News/Index">Главная страница</a>
+            <span class="breadcrumb-item active">@ViewBag.Pagetitle</span>
         </nav>
     </div><!-- kt-breadcrumb -->
     <div class="kt-mainpanel">
@@ -39,8 +40,9 @@
         </div> @*kt-pagetitle*@
         <div class="kt-pagebody">
             <div class="card pd-20 pd-sm-40">
-                <p class="mg-b-20 mg-sm-b-30">Заявки всех пользователей.</p>
-
+             @if (User.IsInRole("admin") || User.IsInRole("auditor"))
+             { 
+                 <p class="mg-b-20 mg-sm-b-30">Заявки всех пользователей.</p>
                 <div class="table-wrapper">
                     <div class="dataTables_length" id="datatable1_length">
 
@@ -49,6 +51,7 @@
                                 <tr>
                                     <th class="wd-10p">Дата</th>
                                     <th class="wd-30p">ФИО заявителя</th>
+                                    <th class="wd-30p">Подразделение</th>
                                     <th class="wd-15p">Стандарт</th>
                                     <th class="wd-20p">Комментарий</th>
                                     <th></th>
@@ -58,33 +61,76 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ApplicationDateTime)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.UserLastName)
-                                            @Html.DisplayFor(modelItem => item.UserName)
-                                            @Html.DisplayFor(modelItem => item.UserMiddleName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.StandartName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.ApplicationContent)
-                                        </td>                                                             
-                                        @*<td>
-                                            @Html.ActionLink("Заявки", "Details", new { id=item.UserId })
-                                        </td>*@
-                                        <td>
-                                            @Html.ActionLink("Удалить", "Delete", new { id=item.ApplicationId })
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ApplicationDateTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserLastName)
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                        @Html.DisplayFor(modelItem => item.UserMiddleName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SubdivisionName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.StandartName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ApplicationContent)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Изменить статус", "Edit", new { id=item.ApplicationId })
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Удалить", "Delete", new { id = item.ApplicationId })
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>
                     </div>
                 </div><!-- row -->
+                }
+             @if (User.IsInRole("user"))
+             { 
+                 <p class="mg-b-20 mg-sm-b-30">Ваши заявки.</p>
+                <div class="table-wrapper">
+                    <div class="dataTables_length" id="datatable1_length">
+
+                        <table id="datatable1" class="table display responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="wd-10p">Дата</th>
+                                    <th class="wd-15p">Стандарт</th>
+                                    <th class="wd-20p">Комментарий</th>
+                                    <th></th>
+                                    @*<th></th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @item.ApplicationDateTime
+                                    </td>                                    
+                                    <td>
+                                        @item.StandartName
+                                    </td>
+                                    <td>
+                                        @item.ApplicationContent
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Удалить", "Delete", new { id = item.ApplicationId })
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- row -->
+                }
             </div><!-- card -->
         </div>
         <div class="kt-footer">

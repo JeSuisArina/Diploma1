@@ -13,13 +13,11 @@ namespace InternalAuditSystem.Models.EntityModels
 
         public int SubdivisionId { get; set; }
 
-        public int StandartId { get; set; }
-
         public DateTime SertificateDate { get; set; }
 
-        public DateTime SertificateShelfLife { get; set; }
+        public int? UserId { get; set; }
 
-        public virtual Standarts Standarts { get; set; }
+        public bool Discrepancy { get; set; }
 
         public virtual Subdivisions Subdivisions { get; set; }
     }

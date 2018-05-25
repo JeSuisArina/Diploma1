@@ -17,35 +17,34 @@ namespace InternalAuditSystem.Controllers
         // GET: Sertificates
         public ActionResult Index()
         {
-            var sertificates = db.Sertificates.Include(s => s.Standarts).Include(s => s.Subdivisions);
-            return View(sertificates.ToList());
+            return View(db.SertificatesView.ToList());
         }
+
         public ActionResult Reports()
         {
-            var sertificates = db.Sertificates.Include(s => s.Standarts).Include(s => s.Subdivisions);
-            return View(sertificates.ToList());
+            return View(db.SertificatesView.ToList());
         }
 
         // GET: Sertificates/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Sertificates sertificates = db.Sertificates.Find(id);
-            if (sertificates == null)
+            SertificatesView sertificatesView = db.SertificatesView.Find(id);
+            if (sertificatesView == null)
             {
                 return HttpNotFound();
             }
-            return View(sertificates);
+            return View(sertificatesView);
         }
 
         // GET: Sertificates/Create
         public ActionResult Create()
         {
-            ViewBag.StandartId = new SelectList(db.Standarts, "StandartId", "StandartName");
-            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
+            ViewBag.SubdivisionList = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
+            ViewBag.UsersList = new SelectList(db.Users, "UserId", "UserLastName");
             return View();
         }
 
@@ -54,22 +53,21 @@ namespace InternalAuditSystem.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SertificateId,SubdivisionId,StandartId,SertificateDate,SertificateShelfLife")] Sertificates sertificates)
+        public ActionResult Create(Sertificates sertificates)
         {
             if (ModelState.IsValid)
             {
+                sertificates.Discrepancy = false;
                 db.Sertificates.Add(sertificates);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StandartId = new SelectList(db.Standarts, "StandartId", "StandartName", sertificates.StandartId);
-            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", sertificates.SubdivisionId);
             return View(sertificates);
         }
 
         // GET: Sertificates/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -80,8 +78,6 @@ namespace InternalAuditSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StandartId = new SelectList(db.Standarts, "StandartId", "StandartName", sertificates.StandartId);
-            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", sertificates.SubdivisionId);
             return View(sertificates);
         }
 
@@ -90,7 +86,7 @@ namespace InternalAuditSystem.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SertificateId,SubdivisionId,StandartId,SertificateDate,SertificateShelfLife")] Sertificates sertificates)
+        public ActionResult Edit(Sertificates sertificates)
         {
             if (ModelState.IsValid)
             {
@@ -98,13 +94,11 @@ namespace InternalAuditSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StandartId = new SelectList(db.Standarts, "StandartId", "StandartName", sertificates.StandartId);
-            ViewBag.SubdivisionId = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", sertificates.SubdivisionId);
             return View(sertificates);
         }
 
         // GET: Sertificates/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -121,10 +115,10 @@ namespace InternalAuditSystem.Controllers
         // POST: Sertificates/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Sertificates sertificates = db.Sertificates.Find(id);
-            db.Sertificates.Remove(sertificates);
+            SertificatesView sertificatesView = db.SertificatesView.Find(id);
+            db.SertificatesView.Remove(sertificatesView);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

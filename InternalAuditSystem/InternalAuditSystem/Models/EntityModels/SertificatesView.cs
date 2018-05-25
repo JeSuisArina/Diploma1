@@ -11,25 +11,33 @@ namespace InternalAuditSystem.Models.EntityModels
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(50)]
+        [StringLength(150)]
         public string SubdivisionName { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(30)]
-        public string StandartName { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
         public DateTime SertificateDate { get; set; }
 
         [Key]
+        [Column(Order = 2)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int SertificateId { get; set; }
+
+        [Key]
         [Column(Order = 3)]
-        public DateTime SertificateShelfLife { get; set; }
+        public bool Discrepancy { get; set; }
 
         [Key]
         [Column(Order = 4)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SertificateId { get; set; }
+        [StringLength(50)]
+        public string UserLastName { get; set; }
+
+        [Key]
+        [Column(Order = 5)]
+        [StringLength(50)]
+        public string UserName { get; set; }
+
+        [StringLength(50)]
+        public string UserMiddleName { get; set; }
     }
 }

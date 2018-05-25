@@ -43,11 +43,19 @@ namespace InternalAuditSystem.Models.EntityModels
 
         [Key]
         [Column(Order = 6)]
-        public byte[] AdjustmentFile { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int AdjustmentId { get; set; }
 
         [Key]
         [Column(Order = 7)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int AdjustmentId { get; set; }
+        public byte[] AuditPlanFile { get; set; }
+
+        [Key]
+        [Column(Order = 8)]
+        public byte[] ReportFile { get; set; }
+
+        [Key]
+        [Column(Order = 9)]
+        public byte[] OrderFile { get; set; }
     }
 }

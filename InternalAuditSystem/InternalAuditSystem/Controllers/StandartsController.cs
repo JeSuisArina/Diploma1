@@ -47,18 +47,19 @@ namespace InternalAuditSystem.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StandartId,StandartName,StandartDescription,StandartFile")] Standarts standarts, HttpPostedFileBase uploadFile)
+        public ActionResult Create(Standarts standarts, HttpPostedFileBase uploadFile)
         {
+            byte[] fileData = null;
+            // считываем переданный файл в массив байтов
+            using (var binaryReader = new BinaryReader(uploadFile.InputStream))
+            {
+                fileData = binaryReader.ReadBytes(uploadFile.ContentLength);
+            }
+            // установка массива байтов
+            standarts.StandartFile = fileData;
             if (ModelState.IsValid && uploadFile != null && uploadFile.ContentLength > 0)
             {
-                byte[] fileData = null;
-                // считываем переданный файл в массив байтов
-                using (var binaryReader = new BinaryReader(uploadFile.InputStream))
-                {
-                    fileData = binaryReader.ReadBytes(uploadFile.ContentLength);
-                }
-                // установка массива байтов
-                standarts.StandartFile = fileData;
+                
                 db.Standarts.Add(standarts);
                 db.SaveChanges();
                 return RedirectToAction("Index");

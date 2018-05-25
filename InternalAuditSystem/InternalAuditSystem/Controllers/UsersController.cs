@@ -37,6 +37,7 @@ namespace InternalAuditSystem.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
+            ViewBag.RoleList = new SelectList(db.Roles, "RoleId", "Role");
             ViewBag.SubdivisionList = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName");
             return View();
         }
@@ -51,7 +52,6 @@ namespace InternalAuditSystem.Controllers
             //ViewBag.SubdivisionList = new SelectList(db.Subdivisions, "SubdivisionId", "SubdivisionName", users.SubdivisionId);
             if (ModelState.IsValid)
             {
-                users.Role = 1;
                 db.Users.Add(users);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -44,7 +44,7 @@ namespace InternalAuditSystem.Models.EntityModels
 
         [Key]
         [Column(Order = 6)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Role { get; set; }
+        [StringLength(20)]
+        public string Role { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 
 @{
 
-                Layout = "~/Views/Shared/_Layout.cshtml";
-                ViewBag.Title = "Подразделения";
-                ViewBag.Pagetitle = "Подразделения";
-                ViewBag.Pass = "Главная страница";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Подразделения";
+    ViewBag.Pagetitle = "Подразделения";
+    ViewBag.Pass = "Главная страница";
 }
 
 <!DOCTYPE html>
@@ -15,20 +15,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>@ViewBag.Title</title>
+    <title>Сотрудники</title>
     <!-- vendor css -->
     <link href="../../Scripts/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="../../Scripts/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="../../Scripts/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="../../Scripts/lib/highlightjs/github.css" rel="stylesheet">
+    <link href="../../Scripts/lib/datatables/jquery.dataTables.css" rel="stylesheet">
+    <link href="../../Scripts/lib/select2/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../Content/katniss.css">
 </head>
 
 <body>
     <div class="kt-breadcrumb">
         <nav class="breadcrumb">
-            <a class="breadcrumb-item" href="index.html">Главная страница</a>
-            <span class="breadcrumb-item active">Сотрудники</span>
+            <a class="breadcrumb-item" href="../News/Index">Главная страница</a>
+            <span class="breadcrumb-item active">Подразделения</span>
         </nav>
     </div><!-- kt-breadcrumb -->
     <div class="kt-mainpanel">
@@ -38,49 +40,51 @@
         <div class="kt-pagebody">
             <div class="card pd-20 pd-sm-40">
                 <p class="mg-b-20 mg-sm-b-30">Список подразделений и отделов Томского Политехничесткого Университета.</p>
-                <p>
-                    <a href="../Subdivisions/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
-                </p>
-                <div class="table-responsive">
-                    <table class="table mg-b-0">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <label class="ckbox mg-b-0">
-                                    </label>
-                                </th>
-                                <th class="wd-65p">Название подразделения</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                            <tr>
-                                <td>
-                                    <label class="ckbox mg-b-0">
-                                    </label>
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SubdivisionName)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Просмотреть сертификаты", "Details", new { id = item.SubdivisionId })
-                                </td>
-                                    @* @Html.ActionLink("Details", "Details", new { id = item.SubdivisionId }) |*@
-                                <td>
-                                    @Html.ActionLink("Удалить подразделение", "Delete", new { id = item.SubdivisionId })
-                                </td>
-                            </tr>
-                            }
-                        </tbody>
-                    </table>
+                @if (User.IsInRole("admin"))
+                {
+                    <p>
+                        <a href="../Subdivisions/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
+                    </p>
+                }
+            
+                <div class="table-wrapper">
+                    <div class="dataTables_length" id="datatable1_length">
+
+                        <table id="datatable1" class="table display responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th class="wd-65p">Название подразделения</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubdivisionName)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Просмотреть сертификаты", "Details", new { id = item.SubdivisionId })
+                            </td>
+                            @* @Html.ActionLink("Details", "Details", new { id = item.SubdivisionId }) |*@
+                            <td>
+                                @Html.ActionLink("Удалить подразделение", "Delete", new { id = item.SubdivisionId })
+                            </td>
+                        </tr>
+        }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="kt-footer">
-            <span> &copy; TPU - @DateTime.Now.Year </span>
+            <span> &copy; TPU - 2018 </span>
         </div><!-- kt-footer -->
     </div>
+
 
 
     <script src="../../Scripts/lib/jquery/jquery.js"></script>
@@ -89,6 +93,21 @@
     <script src="../../Scripts/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
     <script src="../../Scripts/lib/moment/moment.js"></script>
     <script src="../../Scripts/lib/highlightjs/highlight.pack.js"></script>
+    <script src="../../Scripts/lib/datatables/jquery.dataTables.js"></script>
+    <script src="../../Scripts/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../../Scripts/lib/select2/js/select2.min.js"></script>
     <script src="../../Scripts/js/katniss.js"></script>
+
+    <script>
+        $('#datatable1').DataTable({
+            responsive: true,
+            language: {
+                searchPlaceholder: 'Фильтр...',
+                sSearch: '',
+                lengthMenu: '_MENU_ строк/страница',
+            }
+        });
+    </script>
 </body>
 </html>
+

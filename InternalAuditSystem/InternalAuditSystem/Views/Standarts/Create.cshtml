@@ -27,7 +27,7 @@
             <nav class="breadcrumb">
                 <a class="breadcrumb-item" href="../News/Index">Главная страница</a>
                 <a class="breadcrumb-item" href="Index">Стандарты</a>
-                <span class="breadcrumb-item active">Добавить стандарт</span>
+                <span class="breadcrumb-item active">@ViewBag.Title</span>
             </nav>
         </div><!-- kt-breadcrumb -->
         <div class="kt-mainpanel">
@@ -36,10 +36,10 @@
             </div> @*kt-pagetitle*@
             <div class="kt-pagebody">
                 @using (Html.BeginForm("Create",
-"Standarts",
-FormMethod.Post,
-new { enctype = "multipart/form-data" }))
-    {
+                                                "Standarts",
+                                                FormMethod.Post,
+                                                new { enctype = "multipart/form-data" }))
+        {
             @Html.AntiForgeryToken()
 
             <div class="control-label col-md-2">

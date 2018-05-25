@@ -38,32 +38,34 @@
         <div class="kt-pagebody">
             <div class="card pd-20 pd-sm-40">
                 <p class="mg-b-20 mg-sm-b-30">Последние обновления по стандартам и другие новости.</p>
-
+                @if(User.IsInRole("admin") || User.IsInRole("auditor"))
+                {
                 <p>
                     <a href="../News/Create" style="font-size: 24px"><i class="icon ion-ios-plus-outline"></i></a>
                 </p>
+                }
 
                 <div class="row">
-                        @foreach (var item in Model)
-    {
+                    @foreach (var item in Model)
+        {
 
-                    <div class="card pd-15 pd-sm-15 mg-25 bg-gray-200">
-                        <div class="card-body">
-                            <h5 class="card-body-title">@Html.DisplayFor(modelItem => item.NewsTitle)</h5>
-                            <p class="card-subtitle tx-normal mg-b-15">
-                                Прикрепил(а)
-                                @Html.DisplayFor(modelItem => item.UserLastName)
-                                @Html.DisplayFor(modelItem => item.UserName)
-                                @Html.DisplayFor(modelItem => item.UserMiddleName)
-                                в @Html.DisplayFor(modelItem => item.NewsDateTime)
-                            </p>                            
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.NewsContent) </p>
-                            <a class="card-link">@Html.ActionLink("Изменить ", "Edit", new { id = item.NewsId })</a>
-                            <a class="card-link">@Html.ActionLink("Удалить ", "Delete", new { id = item.NewsId })</a>
-                        </div>
-                    </div><!-- card -->
+            <div class="card pd-15 pd-sm-15 mg-25 bg-gray-200">
+                <div class="card-body">
+                    <h5 class="card-body-title">@Html.DisplayFor(modelItem => item.NewsTitle)</h5>
+                    <p class="card-subtitle tx-normal mg-b-15">
+                        Прикрепил(а)
+                        @Html.DisplayFor(modelItem => item.UserLastName)
+                        @Html.DisplayFor(modelItem => item.UserName)
+                        @Html.DisplayFor(modelItem => item.UserMiddleName)
+                        в @Html.DisplayFor(modelItem => item.NewsDateTime)
+                    </p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.NewsContent) </p>
+                    <a class="card-link">@Html.ActionLink("Изменить ", "Edit", new { id = item.NewsId })</a>
+                    <a class="card-link">@Html.ActionLink("Удалить ", "Delete", new { id = item.NewsId })</a>
+                </div>
+            </div><!-- card -->
 }
-                   
+
                 </div><!-- row -->
             </div><!-- card --> 
         </div>

@@ -37,54 +37,79 @@
                 </a>
                 <ul class="nav-sub">
                     <li class="nav-item"><a href="../Standarts/Index" class="nav-link">Список стандартов</a></li>
-                    <li class="nav-item"><a href="../Standarts/Create" class="nav-link">Добавить стандарт</a></li>
+                    @if (User.IsInRole("admin") || User.IsInRole("auditor"))
+            {
+                <li class="nav-item"><a href="../Standarts/Create" class="nav-link">Добавить стандарт</a></li>
+    }
+
                 </ul>
             </li><!-- nav-item -->
-            <li class="nav-item">
-                <a href="" class="nav-link with-sub">
-                    <i class="icon ion-ios-filing-outline"></i>
-                    <span>Заявки</span>
-                </a>
-                <ul class="nav-sub">
-                    <li class="nav-item"><a href="../Applications/Details" class="nav-link">Просмотреть мои заявки</a></li>
-                    <li class="nav-item"><a href="../Applications/Create" class="nav-link">Подать заявку</a></li>
-                    <li class="nav-item"><a href="../Applications/Index" class="nav-link">Просмотреть заявки пользователей</a></li>
-                </ul>
-            </li><!-- nav-item -->
-            <li class="nav-item">
-                <a href="../Sertificates/Index" class="nav-link">
-                    <i class="icon ion-ios-list-outline"></i>
-                    <span>Сертификаты</span>
-                </a>
-            </li><!-- nav-item -->
-            <li class="nav-item">
-                <a href="../Sertificates/Reports" class="nav-link">
-                    <i class="icon ion-ios-analytics-outline"></i>
-                    <span>Отчеты</span>
-                </a>
-            </li><!-- nav-item -->
-            <li class="nav-item">
-                <a href="" class="nav-link with-sub">
-                    <i class="icon ion-ios-briefcase-outline"></i>
-                    <span>Подразделения</span>
-                </a>
-                <ul class="nav-sub">
-                    <li class="nav-item"><a href="../Subdivisions/Index" class="nav-link">Список подразделений</a></li>
-                    <li class="nav-item"><a href="../Subdivisions/Create" class="nav-link">Добавить подразделение</a></li>
-                </ul>
-            </li><!-- nav-item -->
-            <li class="nav-item">
-                <a href="" class="nav-link with-sub">
-                    <i class="icon ion-ios-person-outline"></i>
-                    <span>Пользователи</span>
-                </a>
-                <ul class="nav-sub">
-                    <li class="nav-item"><a href="../Users/Index" class="nav-link">Список пользователей</a></li>
-                    <li class="nav-item"><a href="../Users/Create" class="nav-link">Добавить пользователя</a></li>
-                </ul>
-            </li><!-- nav-item -->
+            @if (User.IsInRole("admin") || User.IsInRole("auditor") || User.IsInRole("user"))
+            {
+                <li class="nav-item">
+                    <a href="" class="nav-link with-sub">
+                        <i class="icon ion-ios-filing-outline"></i>
+                        <span>Заявки</span>
+                    </a>
+                    <ul class="nav-sub">
+                        @if (User.IsInRole("user"))
+                        {
+                            <li class="nav-item"><a href="../Applications/Index" class="nav-link">Просмотреть мои заявки</a></li>
+                            <li class="nav-item"><a href="../Applications/Create" class="nav-link">Подать заявку</a></li>
+                        }
+                        @if (User.IsInRole("admin") || User.IsInRole("auditor"))
+                        {
+                            <li class="nav-item"><a href="../Applications/Index" class="nav-link">Просмотреть заявки пользователей</a></li>
+                        }
+                    </ul>
+                </li><!-- nav-item -->
+            }
+
+            @if (User.IsInRole("admin") || User.IsInRole("auditor"))
+    {
+        <li class="nav-item">
+            <a href="../Sertificates/Index" class="nav-link">
+                <i class="icon ion-ios-list-outline"></i>
+                <span>График аудитов</span>
+            </a>
+        </li><!-- nav-item -->
+
+        <li class="nav-item">
+            <a href="../Sertificates/Reports" class="nav-link">
+                <i class="icon ion-ios-analytics-outline"></i>
+                <span>Отчеты</span>
+            </a>
+        </li><!-- nav-item -->
+        <li class="nav-item">
+            <a href="" class="nav-link with-sub">
+                <i class="icon ion-ios-briefcase-outline"></i>
+                <span>Подразделения</span>
+            </a>
+            <ul class="nav-sub">
+                <li class="nav-item"><a href="../Subdivisions/Index" class="nav-link">Список подразделений</a></li>
+                @if (User.IsInRole("admin"))
+        {
+            <li class="nav-item"><a href="../Subdivisions/Create" class="nav-link">Добавить подразделение</a></li>
+}
+            </ul>
+        </li><!-- nav-item -->
+        <li class="nav-item">
+            <a href="" class="nav-link with-sub">
+                <i class="icon ion-ios-person-outline"></i>
+                <span>Пользователи</span>
+            </a>
+            <ul class="nav-sub">
+                <li class="nav-item"><a href="../Users/Index" class="nav-link">Список пользователей</a></li>
+                @if (User.IsInRole("admin"))
+        {
+            <li class="nav-item"><a href="../Users/Create" class="nav-link">Добавить пользователя</a></li>
+}
+            </ul>
+        </li><!-- nav-item -->
+}
         </ul>
     </div>
+            
 
     <!-- ##### HEAD PANEL ##### -->
     <div class="kt-headpanel">

@@ -26,8 +26,12 @@ namespace InternalAuditSystem.Models.EntityModels
         [StringLength(400)]
         public string ApplicationContent { get; set; }
 
+        public int ApplicationStatusId { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Adjustments> Adjustments { get; set; }
+
+        public virtual ApplicationStatuses ApplicationStatuses { get; set; }
 
         public virtual Standarts Standarts { get; set; }
 
