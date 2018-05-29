@@ -115,27 +115,27 @@ namespace InternalAuditSystem.Controllers
         }
 
         // GET: Applications/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationsView applicationsView = db.ApplicationsView.Find(id);
-            if (applicationsView == null)
+            Applications applications = db.Applications.Find(id);
+            if (applications == null)
             {
                 return HttpNotFound();
             }
-            return View(applicationsView);
+            return View(applications);
         }
 
         // POST: Applications/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int? id)
         {
-            ApplicationsView applicationsView = db.ApplicationsView.Find(id);
-            db.ApplicationsView.Remove(applicationsView);
+            Applications applications = db.Applications.Find(id);
+            db.Applications.Remove(applications);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

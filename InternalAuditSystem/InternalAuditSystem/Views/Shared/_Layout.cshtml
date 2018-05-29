@@ -38,9 +38,9 @@
                 <ul class="nav-sub">
                     <li class="nav-item"><a href="../Standarts/Index" class="nav-link">Список стандартов</a></li>
                     @if (User.IsInRole("admin") || User.IsInRole("auditor"))
-            {
+                    {
                 <li class="nav-item"><a href="../Standarts/Create" class="nav-link">Добавить стандарт</a></li>
-    }
+                    }
 
                 </ul>
             </li><!-- nav-item -->
@@ -65,21 +65,23 @@
                 </li><!-- nav-item -->
             }
 
-            @if (User.IsInRole("admin") || User.IsInRole("auditor"))
-    {
+            @if (User.IsInRole("admin") || User.IsInRole("auditor") || User.IsInRole("user"))
+            {
         <li class="nav-item">
             <a href="../Sertificates/Index" class="nav-link">
                 <i class="icon ion-ios-list-outline"></i>
-                <span>График аудитов</span>
+                <span>Аудиты</span>
             </a>
         </li><!-- nav-item -->
+
 
         <li class="nav-item">
             <a href="../Sertificates/Reports" class="nav-link">
                 <i class="icon ion-ios-analytics-outline"></i>
                 <span>Отчеты</span>
             </a>
-        </li><!-- nav-item -->
+        </li><!-- nav-item --> }
+            @if (User.IsInRole("admin") || User.IsInRole("auditor")) { 
         <li class="nav-item">
             <a href="" class="nav-link with-sub">
                 <i class="icon ion-ios-briefcase-outline"></i>

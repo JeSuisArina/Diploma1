@@ -51,36 +51,38 @@
                             <table id="datatable1" class="table display responsive nowrap">
                                 <thead>
                                     <tr>
-                                        <th class="wd-20p">Название</th>
-                                        <th class="wd-20p">Описание</th>
-                                        <th class="wd-10p">File</th>
+                                        <th class="wd-10p">Название</th>
+                                        <th class="wd-10p">Описание</th>
+                                        <th class="wd-10p">Файл</th>
+                                         @if (User.IsInRole("admin")) {
                                         <th></th>
                                         <th></th>
+                                        }
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StandartName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StandartDescription)
-                                </td>
-                                <td>
-                                    <a href="./GetFile/@item.StandartId">Загрузить</a>
-                                </td>
-
-                                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
-                                <td>
-                                    @Html.ActionLink("Заявки", "Details", new { id = item.StandartId })
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Удалить", "Delete", new { id = item.StandartId })
-                                </td>
-                            </tr>
-            }
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StandartName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.StandartDescription)
+                                            </td>
+                                            <td>
+                                                <a href="./GetFile/@item.StandartId">Загрузить</a>
+                                            </td>
+                                            @if (User.IsInRole("admin")) { 
+                                            <td>
+                                                @Html.ActionLink("Заявки", "Details", new { id = item.StandartId })
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Удалить", "Delete", new { id = item.StandartId })
+                                            </td>
+                                            }
+                                        </tr>
+                                     }
                                 </tbody>
                             </table>
                         </div>

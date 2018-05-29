@@ -104,8 +104,7 @@
                                     <th class="wd-10p">Дата</th>
                                     <th class="wd-15p">Стандарт</th>
                                     <th class="wd-20p">Комментарий</th>
-                                    <th></th>
-                                    @*<th></th>*@
+                                    <th class="wd-20p">Статус</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -114,7 +113,7 @@
                                 <tr>
                                     <td>
                                         @item.ApplicationDateTime
-                                    </td>                                    
+                                    </td>
                                     <td>
                                         @item.StandartName
                                     </td>
@@ -122,7 +121,7 @@
                                         @item.ApplicationContent
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Удалить", "Delete", new { id = item.ApplicationId })
+                                        @item.ApplicationStatus
                                     </td>
                                 </tr>
                                 }

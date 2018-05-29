@@ -60,8 +60,11 @@
                         в @Html.DisplayFor(modelItem => item.NewsDateTime)
                     </p>
                     <p class="card-text">@Html.DisplayFor(modelItem => item.NewsContent) </p>
+                    @if (User.IsInRole("admin"))
+                    {
                     <a class="card-link">@Html.ActionLink("Изменить ", "Edit", new { id = item.NewsId })</a>
                     <a class="card-link">@Html.ActionLink("Удалить ", "Delete", new { id = item.NewsId })</a>
+                    }
                 </div>
             </div><!-- card -->
 }
